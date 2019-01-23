@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>缥缈孤鸿影</title>
+  <title>[译]什么是纯函数? | 缥缈孤鸿影</title>
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -134,23 +134,16 @@
     <div class="l_body">
     <div class='container clearfix'>
         <div class='l_main'>
+            <article id="post-译-什么是纯函数" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
             
-
-<section class="post-list">
-    
-    
-        <div class='post-wrapper'>
-            <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2019/01/23/译-什么是纯函数/">
-                
-                    [译]什么是纯函数?
-                
-            </a>
-        </h2>
+                [译]什么是纯函数?
+            
+        </h1>
         <time>
-            2019-01-23
+            2019-01-23&nbsp;&nbsp;
+            <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         
     
@@ -162,7 +155,9 @@
     </section>
 
     <section class="article typo">
-        <blockquote>
+
+        <div class="article-entry" itemprop="articleBody">
+            <blockquote>
 <p>原文链接： <a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-pure-function-d1c076bec976" target="_blank" rel="noopener">Master the JavaScript Interview: What is a Pure Function?</a><br>原文作者：<a href="https://medium.com/@_ericelliott/" target="_blank" rel="noopener">Eric Elliott</a><br>译者：<a href="https://github.com/SilentZhou" target="_blank" rel="noopener">SilentZhou</a></p>
 </blockquote>
 <p>纯函数是函数式编程、可靠并发、React+Redux应用等必不可少的一部分。但是纯函数究竟是什么意思呢？</p>
@@ -328,22 +323,54 @@ assert.end();
 <p>例如，Redux让你组合reducers而不是在每个reducer中处理整个应用的状态。结果就是当你每次更新状态中的一小部分时，你不必深拷贝整个应用状态。相反，你可以使用非破坏性的数组方法或者`Object.assign()`来更新应用状态的一小部分。</p>
 <p>轮到你了，修改<a href="https://codepen.io/ericelliott/pen/MyojLq?editors=0010" target="_blank" rel="noopener">“这个非纯函数”</a>为纯函数。使它在不修改测试代码的情况下通过单元测试。</p>
 
-        
+        </div>
 
         
-            <div class="full-width auto-padding tags">
+            <div class="article-tags tags">
                 
-                    <a href="/tags/programing/"><i class="fa fa-tag fa-fw"></i>&nbsp;programing</a>
+                    <a href="/tags/programing/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;programing</a>
                 
             </div>
         
+
+        
+
     </section>
+
 </article>
 
-        </div>
-    
-</section>
+<br>
 
+<!-- 显示推荐文章和评论 -->
+
+    <article class="post white-box comments">
+        <section class="article typo">
+
+            
+                
+
+
+            
+
+            
+
+                
+
+                
+
+                
+            
+
+        </section>
+    </article>
+
+
+<script>
+    window.subData = {
+        title: '[译]什么是纯函数?',
+        tools: true
+    }
+</script>
 
 
         </div>
@@ -445,6 +472,13 @@ assert.end();
     
     
         
+    <section class='m_widget toc-wrapper'>
+        <div class="header"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+        <div class='content'>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是函数？"><span class="toc-text">什么是函数？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#映射"><span class="toc-text">映射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#纯函数"><span class="toc-text">纯函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#共享状态的麻烦"><span class="toc-text">共享状态的麻烦</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#给定相同的输入，始终返回相同的输出"><span class="toc-text">给定相同的输入，始终返回相同的输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#纯函数不产生副作用"><span class="toc-text">纯函数不产生副作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不可变性"><span class="toc-text">不可变性</span></a></li></ol>
+        </div>
+    </section>
+
 
     
 
@@ -540,6 +574,10 @@ assert.end();
 <script src="/js/search.js"></script>
 <script src="/js/app.js"></script>
 
+
+    
+    
+    
 
 
     <script>setLoadingBarProgress(100);</script>
