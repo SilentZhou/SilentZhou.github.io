@@ -3,6 +3,17 @@
   
     
     <entry>
+      <title>hello hexo</title>
+      <link href="/2019/01/23/hello-hexo/"/>
+      <url>/2019/01/23/hello-hexo/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Hello-Hexo"><a href="#Hello-Hexo" class="headerlink" title="Hello Hexo"></a>Hello Hexo</h1><p>##What is Hexo?</p><p>Hexo is a fast, simple and powerful blog framework. You write posts in Markdown (or other languages) and Hexo generates static files with a beautiful theme in seconds.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    <entry>
       <title>[译]什么是纯函数?</title>
       <link href="/2019/01/23/%E8%AF%91-%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%AF%E5%87%BD%E6%95%B0/"/>
       <url>/2019/01/23/%E8%AF%91-%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%AF%E5%87%BD%E6%95%B0/</url>

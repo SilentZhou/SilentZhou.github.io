@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.blocknews.xyz/"/>
-  <updated>2019-01-23T02:49:14.963Z</updated>
+  <updated>2019-01-23T07:05:10.613Z</updated>
   <id>https://www.blocknews.xyz/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hello hexo</title>
+    <link href="https://www.blocknews.xyz/2019/01/23/hello-hexo/"/>
+    <id>https://www.blocknews.xyz/2019/01/23/hello-hexo/</id>
+    <published>2019-01-23T07:03:32.000Z</published>
+    <updated>2019-01-23T07:05:10.613Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Hello-Hexo"><a href="#Hello-Hexo" class="headerlink" title="Hello Hexo"></a>Hello Hexo</h1><p>##What is Hexo?</p><p>Hexo is a fast, simple and powerful blog framework. You write posts in Markdown (or other languages) and Hexo generates static files with a beautiful theme in seconds.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Hello-Hexo&quot;&gt;&lt;a href=&quot;#Hello-Hexo&quot; class=&quot;headerlink&quot; title=&quot;Hello Hexo&quot;&gt;&lt;/a&gt;Hello Hexo&lt;/h1&gt;&lt;p&gt;##What is Hexo?&lt;/p&gt;
+&lt;p&gt;Hexo is a fast,
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>[译]什么是纯函数?</title>
