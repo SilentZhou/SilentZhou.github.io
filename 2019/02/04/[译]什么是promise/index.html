@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>[译]什么是promise? | 缥缈孤鸿影</title>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="缥缈孤鸿影">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="shortcut icon" href="" />
+  <link rel="icon" href="" />
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				缥缈孤鸿影
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+                        
+    						
+    							<li>
+    								<a class='nav-about flat-box' href='/'>
+    									<i class='fa fa-home fa-'></i>&nbsp;主页
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-projects flat-box' href='https://www.blocknews.xyz/'>
+    									<i class='fa fa-cube fa-'></i>&nbsp;项目
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-home flat-box' href='/'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;博客
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-archives flat-box' href='/archives'>
+    									<i class='fa fa-archive fa-'></i>&nbsp;归档
+    								</a>
+    							</li>
+    						
+        			 
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fa fa-search fa-fw" href='javascript:void(0)'></span></a></li>
+				
+				<li class='s-menu'><a class="fa fa-navicon fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="fa fa-comments fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-top'><a class="fa fa-arrow-up fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="fa fa-list-ul fa-fw flat-box" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">缥缈孤鸿影</div>
+		<nav>
+            <ul>
+                
+                    
+                        <li>
+                            <a class='nav-about flat-box nav flat-box' href='/'><i class='fa fa-home fa-fw'></i>&nbsp;主页</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-projects flat-box nav flat-box' href='https://www.blocknews.xyz/'><i class='fa fa-cube fa-fw'></i>&nbsp;项目</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-home flat-box nav flat-box' href='/'><i class='fa fa-rss fa-fw'></i>&nbsp;博客</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-archives flat-box nav flat-box' href='/archives'><i class='fa fa-archive fa-fw'></i>&nbsp;归档</a>
+                        </li>
+                    
+             
+            </ul>
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post-[译]什么是promise" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                [译]什么是promise?
+            
+        </h1>
+        <time>
+            2019-02-04&nbsp;&nbsp;
+            <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/technology/">technology</a>
+    </div>
+
+
+    </section>
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>Promise是一个可能会在未来某个时刻产生一个值的对象：一个解决值或者是没有解决的理由(例如网络错误)。Promise可能处于以下3种状态的一种：执行态，拒绝态，等待态。Promise使用者可以添加回调函数来处理返回值或者被拒绝的理由。</p>
+<a id="more"></a>
+<blockquote>
+<p>原文链接： <a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261" target="_blank" rel="noopener">Master the JavaScript Interview: What is a Promise?</a><br>原文作者：<a href="https://medium.com/@_ericelliott/" target="_blank" rel="noopener">Eric Elliott</a><br>译者：SilentZhou</p>
+</blockquote>
+<p>Promise是一个可能会在未来某个时刻产生一个值的对象：一个解决值或者是没有解决的理由(例如网络错误)。Promise可能处于以下3种状态的一种：执行态，拒绝态，等待态。Promise使用者可以添加回调函数来处理返回值或者被拒绝的理由。</p>
+<h2 id="什么是Promise"><a href="#什么是Promise" class="headerlink" title="什么是Promise?"></a>什么是Promise?</h2><p>Promises是立刻执行的，意味着promise的构造函数一旦被调用它会立刻开始执行任何你给的任务。如果你需要懒执行,可以看看<a href="https://github.com/Reactive-Extensions/RxJS" target="_blank" rel="noopener">observables</a> 或者<a href="https://github.com/rpominov/fun-task" target="_blank" rel="noopener">tasks</a>。</p>
+<h2 id="一个不完整的Promises历史"><a href="#一个不完整的Promises历史" class="headerlink" title="一个不完整的Promises历史"></a>一个不完整的Promises历史</h2><p>Promises和futures(相似的概念)的早期实现于1980年代在MultiLisp和Concurrent Prolog这样的语言中出现的。“promise”这个词的使用最早是由 Barbara Liskov 和 Liuba Shrira 于1988年创造的。</p>
+<p>我第一次在JavaScript中听说Promises的时候,Node还是一个全新的(事物),社区正在讨论处理异步行为的最佳方式。社区尝试过使用一段时间promises,但是最终选择了Node标准的错误优先回调。</p>
+<p>与此同时,Dojo通过递延API添加了promises。(对promise的)兴趣和活动日益增长最终促使为了增加不同promise实现的互操作性的Promises/A规范的形成。</p>
+<p>jQuery的异步操作基于promises进行了重构。jQuery的promise和Dojo的Deferred非常相似，由于jQuery一度非常流行它迅速成为最普遍使用的promise实现。然而，它不支持人们希望指望在其之上构建工具的两状态(执行态/拒绝态)链式调用和意外处理(<a href="https://blog.domenic.me/youre-missing-the-point-of-promises/" target="_blank" rel="noopener">https://blog.domenic.me/youre-missing-the-point-of-promises/)。</a>。)</p>
+<p>除了这些缺陷，jQuery正式让JavaScript promises成为主流，与此同时，更好的独立promise库例如Q和Bluebird变得非常流行。jQuery的promise实现的不兼容性激发了promise规范进行一些重要的澄清，promise因此被重写并被重新命名位<a href="https://promisesaplus.com/" target="_blank" rel="noopener">Promise/A+规范</a>。</p>
+<p>ES6带来了兼容Promise/A+规范的全局Promise,其中一些非常重要的APIs建立在新标准Promise支持之上:特别是<a href="https://fetch.spec.whatwg.org/" target="_blank" rel="noopener">WHATWG Fetch</a>规范和<a href="https://tc39.github.io/ecmascript-asyncawait/" target="_blank" rel="noopener">Async Functions</a>标准(写作此文时处于阶段3草案)。</p>
+<p>这里描述的是兼容Promise/A+规范,专注于ECMAScript标准实现的promises。</p>
+<h2 id="Promises是如何运行的"><a href="#Promises是如何运行的" class="headerlink" title="Promises是如何运行的"></a>Promises是如何运行的</h2><p>Promise是一个能够同步返回异步函数的对象。它可能处于这三种状态之一：</p>
+<ol>
+<li>执行态：onFulfilled()将会被调用(例如,resolve()被调用后)</li>
+<li>拒绝态: onRejected())将会被调用(例如,reject()被调用后)</li>
+<li>等待态: 还没有执行或拒绝</li>
+</ol>
+<p>Promise如果没有处于等待(已经resolved或者rejected)那么就解决了。有时候人们使用resolved和settled表示同一件事：没有处于等待。</p>
+<p>一旦解决,promise不能重新被解决。再次调用<code>resolve()</code>和<code>reject()</code>不会有效果。解决后promise的不可变性是一个重要特征。</p>
+<p>原生JavaScript的promise不会暴露promise状态。相反,你最好把promise当作一个黑盒子。只有负责创建promise的函数才了解promise的状态，并有解决和拒绝的权限。</p>
+<p>这是一个返回了promise的函数，返回的promise将在固定时间的延迟后解决：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> wait = <span class="function"><span class="params">time</span> =&gt;</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> setTimeout(resolve, time));</span><br><span class="line"></span><br><span class="line">wait(<span class="number">3000</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'Hello!'</span>)); <span class="comment">// 'Hello!'</span></span><br></pre></td></tr></table></figure>
+<p><code>wait(3000)</code>这个调用将在等待3000ms(3秒),然后打印<code>Hello!</code>。所有兼容规范的promise的都定义了一个<code>.then()</code>方法，该方法用于传递处理函数，处理函数可以接受解决值或拒绝值。</p>
+<p>ES6的promise构造函数接受一个函数。该函数有两个参数，<code>resolve()</code>和<code>reject()</code>。在上面的例子中，我们只使用了<code>resolve()</code>，所以我们忽略了<code>reject()</code>。然后我们调用<code>setTimeout()</code>来形成延迟，然后当它结束时调用<code>resolve()</code>。</p>
+<p>你可以将值传入<code>resolve()</code>或<code>reject()</code>，返回值将被传递到<code>.then()</code>方法的回调函数中。</p>
+<p>当我使用<code>reject()</code>时，我总会传入一个Error对象。通常我希望有两种可能的解决状态：一种是正常的愉快之路，一种是例外——任何阻碍正常的愉快之路的情况。传入一个Error对象使情况更加明确。</p>
+<h2 id="重要的Promise规则"><a href="#重要的Promise规则" class="headerlink" title="重要的Promise规则"></a>重要的Promise规则</h2><p>Promise标准是由<a href="https://promisesaplus.com/implementations" target="_blank" rel="noopener">Promises/A+</a>社区规范定义的。有许多遵照这个标准的实现，包括JavaScript标准的ECMAScript promises。</p>
+<p>遵照规范的promises应该遵守一系列规则：</p>
+<ol>
+<li>promise或者thenable是一个提供了符合标准的<code>.then()</code>方法的对象。</li>
+<li>等待态promise可以转变为执行或拒绝的状态。</li>
+<li>一个执行态或拒绝态是已解决的，不能再转变为其它状态。</li>
+<li>promise一旦解决，它必须有一个值(可以是<code>undefined</code>)。</li>
+</ol>
+<p>这是所说的改变是用<code>===</code>来比较的。完成值可以是对象，对象的属性允许改变。</p>
+<p>每一个promise必须提供一个具有以下特征的<code>.then()</code>方法：</p>
+<blockquote>
+<p>promise.then(<br>onFulfilled?: Function,<br>onRejected?: Function<br>) =&gt; Promise</p>
+</blockquote>
+<p><code>.then()</code>方法必须遵照以下规则：</p>
+<ol>
+<li><code>onFulfilled()</code>和<code>onRejected()</code>都是可选参数。</li>
+<li>如果提供的参数不是函数，则必须被忽略。</li>
+<li><code>onFulfilled()</code>将会在promise被执行后调用，promise的值将作为第一个参数。</li>
+<li><code>onRejected()</code>将会在promise被拒绝后调用，拒绝的理由将作为第一个参数。理由可以是任意的有效JavaScript值，但是因为拒绝本质上就是异常，我推荐使用Error对象。</li>
+<li><code>onFulfilled()</code>和<code>onRejected()</code>都只能最多被调用一次。</li>
+<li>同一个promise可能调用多次<code>.then()</code>。换言之，promise可以被用来汇总回调函数。</li>
+<li><code>.then()</code>方法必须返回一个新的promise:<code>promise2</code>。</li>
+<li>如果<code>onFulfilled()</code>或<code>onRejected()</code>有一个返回值<code>x</code>，并且<code>x</code>是一个promise，promise2将锁定为<code>x</code>(假定与<code>x</code>有相同的状态和值)。否则,promise2将被执行且值是<code>x</code>。</li>
+<li>如果<code>onFulfilled()</code>或<code>onRejected()</code>抛出一个异常<code>e</code>,promise2必须以<code>e</code>作为理由被拒绝。</li>
+<li>如果<code>onFulfilled()</code>不是一个函数并且promise1已经被执行，promise2则必须以同promise1相同的值被执行。</li>
+<li>如果<code>onRejected()</code>不是一个函数并且promise1已经被拒绝，promise2则必须以同promise1相同的理由被拒绝。</li>
+</ol>
+<h2 id="Promise链"><a href="#Promise链" class="headerlink" title="Promise链"></a>Promise链</h2><p>因为<code>.then()</code>总是返回一个新的promise，那么精确控制如何处理和在什么地方处理错误链式调用Promise。Promises允许你模仿同步代码的<code>try/catch</code>行为。</p>
+<p>和同步代码一样，链式调用会形成顺序执行。换言之，你可以这样做：</p>
+<blockquote>
+<p>fetch(url)<br>.then(process)<br>.then(save)<br>.catch(handleErrors)<br>;</p>
+</blockquote>
+<p>假设每一个函数,<code>fetch()</code>,<code>process()</code>,和<code>save()</code>都返回promises, <code>process()</code>将等待<code>fetch()</code>完成再开始,<code>save()</code>将等待<code>process()</code>完成再开始。<code>handleErrors()</code>只会当前面任意一个promise拒绝时才执行。</p>
+<p>这是一个多次拒绝的复杂promise链的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> wait = <span class="function"><span class="params">time</span> =&gt;</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(</span><br><span class="line">  res =&gt; setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> res(), time)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">wait(<span class="number">200</span>)</span><br><span class="line">  <span class="comment">// onFulfilled() can return a new promise, `x`</span></span><br><span class="line">  .then(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">res</span> =&gt;</span> res(<span class="string">'foo'</span>)))</span><br><span class="line">  <span class="comment">// the next promise will assume the state of `x`</span></span><br><span class="line">  .then(<span class="function"><span class="params">a</span> =&gt;</span> a)</span><br><span class="line">  <span class="comment">// Above we returned the unwrapped value of `x`</span></span><br><span class="line">  <span class="comment">// so `.then()` above returns a fulfilled promise</span></span><br><span class="line">  <span class="comment">// with that value:</span></span><br><span class="line">  .then(<span class="function"><span class="params">b</span> =&gt;</span> <span class="built_in">console</span>.log(b)) <span class="comment">// 'foo'</span></span><br><span class="line">  <span class="comment">// Note that `null` is a valid promise value:</span></span><br><span class="line">  .then(<span class="function"><span class="params">()</span> =&gt;</span> <span class="literal">null</span>)</span><br><span class="line">  .then(<span class="function"><span class="params">c</span> =&gt;</span> <span class="built_in">console</span>.log(c)) <span class="comment">// null</span></span><br><span class="line">  <span class="comment">// The following error is not reported yet:</span></span><br><span class="line">  .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'foo'</span>);&#125;)</span><br><span class="line">  <span class="comment">// Instead, the returned promise is rejected</span></span><br><span class="line">  <span class="comment">// with the error as the reason:</span></span><br><span class="line">  .then(</span><br><span class="line">    <span class="comment">// Nothing is logged here due to the error above:</span></span><br><span class="line">    d =&gt; <span class="built_in">console</span>.log(<span class="string">`d: <span class="subst">$&#123; d &#125;</span>`</span>),</span><br><span class="line">    <span class="comment">// Now we handle the error (rejection reason)</span></span><br><span class="line">    e =&gt; <span class="built_in">console</span>.log(e)) <span class="comment">// [Error: foo]</span></span><br><span class="line">  <span class="comment">// With the previous exception handled, we can continue:</span></span><br><span class="line">  .then(<span class="function"><span class="params">f</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">`f: <span class="subst">$&#123; f &#125;</span>`</span>)) <span class="comment">// f: undefined</span></span><br><span class="line">  <span class="comment">// The following doesn't log. e was already handled,</span></span><br><span class="line">  <span class="comment">// so this handler doesn't get called:</span></span><br><span class="line">  .catch(<span class="function"><span class="params">e</span> =&gt;</span> <span class="built_in">console</span>.log(e))</span><br><span class="line">  .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'bar'</span>); &#125;)</span><br><span class="line">  <span class="comment">// When a promise is rejected, success handlers get skipped.</span></span><br><span class="line">  <span class="comment">// Nothing logs here because of the 'bar' exception:</span></span><br><span class="line">  .then(<span class="function"><span class="params">g</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">`g: <span class="subst">$&#123; g &#125;</span>`</span>))</span><br><span class="line">  .catch(<span class="function"><span class="params">h</span> =&gt;</span> <span class="built_in">console</span>.log(h)) <span class="comment">// [Error: bar]</span></span><br><span class="line">;</span><br></pre></td></tr></table></figure>
+<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><p>请注意promises同时具有成功和错误处理函数，很容易见到下面这样的代码：</p>
+<blockquote>
+<p>save().then(<br>handleSuccess,<br>handleError<br>);</p>
+</blockquote>
+<p>但是如果<code>handleSuccess()</code>抛出了错误该怎么办?从<code>.then()</code>返回的promise会被拒绝，但是没办法捕捉到这个拒绝——意味着一个错误在你的app中被吞没了。天哪！</p>
+<p>因为这个原因，一些人认为上面的代码是反模式的，并且推荐下面的写法：</p>
+<blockquote>
+<p>save()<br>.then(handleSuccess)<br>.catch(handleError)<br>;</p>
+</blockquote>
+<p>其中的区别是微妙但重要的。在第一个例子中，源自<code>save()</code>操作的错误将被捕获，但是源自<code>handleSuccess()</code>函数的错误将被吞没。</p>
+<p>在第二个例子中，<code>.catch()</code>将会处理来自<code>save()</code>或<code>handleSuccess()</code>的拒绝。</p>
+<p>当然，<code>save()</code>错误可能是网络错误，而<code>handleSuccess()</code>错误可能是因为开发者忘记处理特定的状态码。如果你想以不同方式处理他们呢?你可以选择同时处理他们：</p>
+<blockquote>
+<p>save()<br>.then(<br>handleSuccess,<br>handleNetworkError<br>) .catch(handleProgrammerError)<br>;</p>
+</blockquote>
+<p>无论你喜欢哪种方式，我建议在所有promise链的末尾加上<code>.catch()</code>。值得重复一遍：</p>
+<blockquote>
+<p>我建议在所有promise链的末尾加上<code>.catch()</code>。</p>
+</blockquote>
+<h2 id="我如何取消一个promise？"><a href="#我如何取消一个promise？" class="headerlink" title="我如何取消一个promise？"></a>我如何取消一个promise？</h2><p>Promise的新用户经常想知道的第一件事是如何取消一个promise。这有个主意：只需要以<code>取消</code>为理由拒绝这个promise。如果你需要以不同于寻常错误的方式来处理它，那么你可以在你的错误处理程序中新建一个分支。</p>
+<p>这里是一些人们取消promise时犯的常见错误：</p>
+<h3 id="在promise上添加-cancel"><a href="#在promise上添加-cancel" class="headerlink" title="在promise上添加.cancel()"></a>在promise上添加.cancel()</h3><p>添加<code>.cancel()</code>让promise变得不合标准，而且同时也打破了另一条promise的规则：只有创建promise的函数才能够解决，拒绝，取消promise。暴露它破坏了封装性，并且鼓励人们在他们不应该知道的地方编写操作promise的代码。应该避免面条代码和破坏promise。</p>
+<h3 id="忘记清除"><a href="#忘记清除" class="headerlink" title="忘记清除"></a>忘记清除</h3><p>一些聪明人已经明白有办法利用<code>Promise.race()</code>作为取消机制。这里的问题是取消控制在创建promise的函数中进行，这个函数是唯一可以进行适当清理活动的地方，例如清除超时或者通过清除对数据的引用来释放内存，等等…</p>
+<h3 id="忘记处理被拒绝的取消promise"><a href="#忘记处理被拒绝的取消promise" class="headerlink" title="忘记处理被拒绝的取消promise"></a>忘记处理被拒绝的取消promise</h3><p>你知道当你忘记处理被拒绝的promise时Chrome会一直在控制台发出警告消息吗？天哪！</p>
+<h3 id="过于复杂"><a href="#过于复杂" class="headerlink" title="过于复杂"></a>过于复杂</h3><p>撤销的TC39提案提出了一个单独的消息通道用于取消。它使用了一个称作取消令牌的新概念。在我看来，这个方案会让promise规范变得相当臃肿。它提供的原有规范不支持的唯一特征是<code>拒绝</code>和<code>取消</code>的分离，但在我看来，这是一开始就没必要的。</p>
+<p>你想根据是否有异常或取消来切换处理方式吗？是的，当然。但这是promise的工作吗？在我看来,不，它不是。</p>
+<h3 id="重新思考promise的取消"><a href="#重新思考promise的取消" class="headerlink" title="重新思考promise的取消"></a>重新思考promise的取消</h3><p>通常，我会在promise创建时传入所有promise决定如何解决/拒绝/取消所需要的信息。那样的话，promise不需要一个<code>.cancel()</code>方法。你可能奇怪如何在promise创建时就知道是否需要取消。</p>
+<blockquote>
+<p>“如果我不确定是否要取消，我怎么知道在promise创建时传入什么？”</p>
+</blockquote>
+<p>如果存在一种对象可以代表未来的一个值… oh，等等。</p>
+<p>我们传入的代表是否取消的值自身也可以是一个promise。它看起来可能是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> wait = (</span><br><span class="line">  time,</span><br><span class="line">  cancel = <span class="built_in">Promise</span>.reject()</span><br><span class="line">) =&gt; <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> timer = setTimeout(resolve, time);</span><br><span class="line">  <span class="keyword">const</span> noop = <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  cancel.then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    clearTimeout(timer);</span><br><span class="line">    reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Cancelled'</span>));</span><br><span class="line">  &#125;, noop);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> shouldCancel = <span class="built_in">Promise</span>.resolve(); <span class="comment">// Yes, cancel</span></span><br><span class="line"><span class="comment">// const shouldCancel = Promise.reject(); // No cancel</span></span><br><span class="line"></span><br><span class="line">wait(<span class="number">2000</span>, shouldCancel).then(</span><br><span class="line">  () =&gt; <span class="built_in">console</span>.log(<span class="string">'Hello!'</span>),</span><br><span class="line">  (e) =&gt; <span class="built_in">console</span>.log(e) <span class="comment">// [Error: Cancelled]</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>我们使用默认参数使它默认不取消。它使<code>cancel</code>参数变成方便的可选参数。然后我们像之前一样设置超时，但是这次我们保存了超时计时的ID以便之后清除。</p>
+<p>我们使用<code>cancel.then()</code>方法来处理取消和资源清理。这个方法只会在promise有机会解决之前被取消时才会运行。如果你取消得太晚，你会错过机会。火车已经驶离站台了。</p>
+<blockquote>
+<p>注意：你可能想知道<code>noop()</code>函数是干什么的。<code>noop</code>这个词的意思是空操作，意味着函数什么也不做。如果没有它，V8会抛出警告消息：<code>UnhandledPromiseRejectionWarning: Unhandled promise rejection</code>。始终处理promise拒绝是一个好主意，即使处理函数是一个<code>noop()</code>。</p>
+</blockquote>
+<h3 id="概括promise的取消"><a href="#概括promise的取消" class="headerlink" title="概括promise的取消"></a>概括promise的取消</h3><p>这对于<code>wait()</code>计时器是很好的，但我们还可以进一步抽象出来封装所有你不得不记住的事：</p>
+<ol>
+<li><code>cancel promise</code>的默认状态为拒绝——如果没有传入<code>cancel promise</code>，我们不想取消或出现错误。</li>
+<li>当你拒绝取消时请记得执行清理。</li>
+<li>请记住，<code>onCancel</code>清理时自身可能会产生错误，这个错误也需要处理。(请注意在上面的等待例子中错误处理被省略了——它很容易被忘记!)</li>
+</ol>
+<p>让我们创建一个可以取消promise的基础工具，它可以用来包裹任何promise。例如，处理网络申请，等等…它看起来像这样：</p>
+<blockquote>
+<p>speculation(fn: SpecFunction, shouldCancel: Promise) =&gt; Promise</p>
+</blockquote>
+<p><code>SpecFunction</code>就像你传入<code>Promise</code>构造函数的函数一样，只有一点不同——它有一个<code>onCancel()</code>处理函数：</p>
+<blockquote>
+<p>SpecFunction(resolve: Function, reject: Function, onCancel: Function) =&gt; Void</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// HOF Wraps the native Promise API</span></span><br><span class="line"><span class="comment">// to add take a shouldCancel promise and add</span></span><br><span class="line"><span class="comment">// an onCancel() callback.</span></span><br><span class="line"><span class="keyword">const</span> speculation = (</span><br><span class="line">  fn,</span><br><span class="line">  cancel = <span class="built_in">Promise</span>.reject() <span class="comment">// Don't cancel by default</span></span><br><span class="line">) =&gt; <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> noop = <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> onCancel = (</span><br><span class="line">    handleCancel</span><br><span class="line">  ) =&gt; cancel.then(</span><br><span class="line">      handleCancel,</span><br><span class="line">      <span class="comment">// Ignore expected cancel rejections:</span></span><br><span class="line">      noop</span><br><span class="line">    )</span><br><span class="line">    <span class="comment">// handle onCancel errors</span></span><br><span class="line">    .catch(<span class="function"><span class="params">e</span> =&gt;</span> reject(e))</span><br><span class="line">  ;</span><br><span class="line"></span><br><span class="line">  fn(resolve, reject, onCancel);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>请注意，这只是一个告诉你它工作原理的要点的例子。你还需要考虑许多其它边缘情况。<br>例如，在这个例子中，如果你在promise已经解决后取消promise，<code>handleCancel</code>将会被调用。</p>
+<p>我将这些边缘情况实现了一个在维护的生产版本作为开源库，<a href="https://github.com/ericelliott/speculation" target="_blank" rel="noopener">Speculation</a>。</p>
+<p>让我们使用改进的库来重写可取消的<code>wait()</code>程序。首先安装speculation：</p>
+<blockquote>
+<p>npm install –save speculation</p>
+</blockquote>
+<p>现在你可以引入并使用它：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> speculation <span class="keyword">from</span> <span class="string">'speculation'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> wait = (</span><br><span class="line">  time,</span><br><span class="line">  cancel = <span class="built_in">Promise</span>.reject() <span class="comment">// By default, don't cancel</span></span><br><span class="line">) =&gt; speculation(<span class="function">(<span class="params">resolve, reject, onCancel</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> timer = setTimeout(resolve, time);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Use onCancel to clean up any lingering resources</span></span><br><span class="line">  <span class="comment">// and then call reject(). You can pass a custom reason.</span></span><br><span class="line">  onCancel(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    clearTimeout(timer);</span><br><span class="line">    reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Cancelled'</span>));</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;, cancel); <span class="comment">// remember to pass in cancel!</span></span><br><span class="line"></span><br><span class="line">wait(<span class="number">200</span>, wait(<span class="number">500</span>)).then(</span><br><span class="line">  () =&gt; <span class="built_in">console</span>.log(<span class="string">'Hello!'</span>),</span><br><span class="line">  (e) =&gt; <span class="built_in">console</span>.log(e)</span><br><span class="line">); <span class="comment">// 'Hello!'</span></span><br><span class="line"></span><br><span class="line">wait(<span class="number">200</span>, wait(<span class="number">50</span>)).then(</span><br><span class="line">  () =&gt; <span class="built_in">console</span>.log(<span class="string">'Hello!'</span>),</span><br><span class="line">  (e) =&gt; <span class="built_in">console</span>.log(e)</span><br><span class="line">); <span class="comment">// [Error: Cancelled]</span></span><br></pre></td></tr></table></figure>
+<p>这样就简化了许多，因为你不需要担心<code>noop()</code>,在<code>onCancel()</code>中捕捉错误或者其它边缘情况。那些细节已经被<code>speculation()</code>提取出来了。看看这个，在真实项目中自由使用它吧。</p>
+<h2 id="原生JS-Promise的额外内容"><a href="#原生JS-Promise的额外内容" class="headerlink" title="原生JS Promise的额外内容"></a>原生JS Promise的额外内容</h2><p>原生Promise对象有一些你可能感兴趣的其它内容：</p>
+<ul>
+<li><code>Promise.reject()</code>返回一个被拒绝的promise。</li>
+<li><code>Promise.resolve()</code>返回一个被解决的promise。</li>
+<li><code>Promise.race()</code>接受一个数组(或任何可迭代对象)，返回一个promise，这个promise将会在第一个解决promise之后以相同的值解决，或者在第一个拒绝的promise之后以相同的理由拒绝。</li>
+<li><code>Promise.all()</code>接受一个数组(或任何可迭代对象)，返回一个promise，这个promise将会在所有可迭代参数的promises解决之后解决，或者在第一个拒绝的promise之后以相同的理由拒绝。</li>
+</ul>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>Promises已经变成JavaScript中几个习惯用法的一部分，包括用于现代ajax请求的<a href="https://fetch.spec.whatwg.org/" target="_blank" rel="noopener">WHATWG Fetch</a>标准，和用于让异步代码看起来像同步代码的<a href="https://tc39.github.io/ecmascript-asyncawait/" target="_blank" rel="noopener">Async Functions</a>标准。</p>
+<p>写这篇文章的时候<code>Async functions</code>处于第3阶段，但是我预计它们会很快变成JavaScript中一个流行的，常用的异步编程解决方案——意味着对于JavaScript开发者，学习领会promises将在不远的将来变得更加重要。</p>
+<p>例如，如果你正在使用Redux,我建议你看看<a href="https://github.com/redux-saga/redux-saga" target="_blank" rel="noopener">redux-saga</a>:一个用于管理Redux中副作用的库,纵观文档它依赖于<code>async functions</code>。</p>
+<p>我希望即使是有经验的promise使用者在阅读完本文后，对于什么是promise、promise的工作原理以及如何更好地使用promise能够有更好的了解。</p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/programming/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;programming</a>
+                
+            </div>
+        
+
+        
+            <div class="prev-next">
+                
+                    <section class="prev" >
+                        <span class="art-item-left">
+                            <h6><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
+                            <h4>
+                                <a href="/2021/01/25/proxy与双向绑定/" rel="prev" title="Proxy与双向绑定">
+                                  
+                                      Proxy与双向绑定
+                                  
+                                </a>
+                            </h4>
+                            
+                                <h6 class="tags">
+                                    
+                                        <i class="fa fa-tag fa-fw"></i>programming
+                                    
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/01/23/译-什么是纯函数/" rel="prev" title="[译]什么是纯函数?">
+                                    
+                                        [译]什么是纯函数?
+                                    
+                                </a>
+                            </h4>
+                            
+                                <h6 class="tags">
+                                    
+                                        <i class="fa fa-tag fa-fw"></i>programming
+                                    
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+    <article class="post white-box comments">
+        <section class="article typo">
+
+            
+                
+
+    <div class="recommended_posts">
+        <h4><i class="fa fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;你可能感兴趣的文章</h4>
+        <ul>
+            
+                <li><a href="https://www.blocknews.xyz/2021/01/25/proxy与双向绑定/">Proxy与双向绑定</a></li>
+            
+                <li><a href="https://www.blocknews.xyz/2019/01/23/译-什么是纯函数/">[译]什么是纯函数?</a></li>
+            
+                <li><a href="https://www.blocknews.xyz/2018/09/25/我们还要再等30年吗/">我们还要再等30年吗?</a></li>
+            
+        </ul>
+    </div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+
+
+            
+
+            
+
+                
+
+                
+
+                
+            
+
+        </section>
+    </article>
+
+
+<script>
+    window.subData = {
+        title: '[译]什么是promise?',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+    
+        
+    <section class='m_widget author'>
+        
+            <div class='header'>
+                <img class='avatar' src='/images/rock_egg.jpg' />
+            </div>
+        
+        <div class='content'>
+            
+                <h2>SilentZhou</h2>
+            
+            
+                <div>
+                    <i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>
+                    Living in truth。
+                </div>
+            
+        </div>
+        
+            <div class="social-wrapper">
+              
+                
+                    <a href="mailto:silentzhoucode@gmail.com" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-envelope" aria-hidden="true"></i></a>
+                
+              
+                
+                    <a href="https://github.com/SilentZhou" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-github" aria-hidden="true"></i></a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                    <a href="atom" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-rss" aria-hidden="true"></i></a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            </div>
+        
+    </section>
+
+
+    
+    
+        <section class='m_widget categories'>
+    <div class='header'><i class="fa fa-sitemap fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+    <div class='content'>
+        
+            <ul class="entry">
+                
+                    <li><a class="flat-box" href="/categories/life/"><div class='name'>life</div><div class='badge'>1</div></a></li>
+                
+                    <li><a class="flat-box" href="/categories/technology/"><div class='name'>technology</div><div class='badge'>3</div></a></li>
+                
+            </ul>
+        
+    </div>
+</section>
+
+    
+    
+        
+    <section class='m_widget tagcloud'>
+        <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+        <div class='content'>
+            <a href="/tags/music/" style="font-size: 14px; color: #999">music</a> <a href="/tags/programming/" style="font-size: 24px; color: #555">programming</a>
+        </div>
+    </section>
+
+
+    
+    
+    
+    
+        
+    <section class='m_widget toc-wrapper'>
+        <div class="header"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+        <div class='content'>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是Promise"><span class="toc-text">什么是Promise?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一个不完整的Promises历史"><span class="toc-text">一个不完整的Promises历史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promises是如何运行的"><span class="toc-text">Promises是如何运行的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重要的Promise规则"><span class="toc-text">重要的Promise规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise链"><span class="toc-text">Promise链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#错误处理"><span class="toc-text">错误处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#我如何取消一个promise？"><span class="toc-text">我如何取消一个promise？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在promise上添加-cancel"><span class="toc-text">在promise上添加.cancel()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#忘记清除"><span class="toc-text">忘记清除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#忘记处理被拒绝的取消promise"><span class="toc-text">忘记处理被拒绝的取消promise</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#过于复杂"><span class="toc-text">过于复杂</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重新思考promise的取消"><span class="toc-text">重新思考promise的取消</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#概括promise的取消"><span class="toc-text">概括promise的取消</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原生JS-Promise的额外内容"><span class="toc-text">原生JS Promise的额外内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结论"><span class="toc-text">结论</span></a></li></ol>
+        </div>
+    </section>
+
+
+    
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    </div>
+    <footer id="footer" class="clearfix">
+    
+        <div class="social-wrapper">
+          
+              
+                  <a href="mailto:silentzhoucode@gmail.com" class="social fa fa-envelope flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+                  <a href="https://github.com/SilentZhou" class="social fa fa-github flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <a href="atom" class="social fa fa-rss flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+        </div>
+    
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+</footer>
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+    <script>
+        var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+        var ALGOLIA_API_KEY = "";
+        var ALGOLIA_APP_ID = "";
+        var ALGOLIA_INDEX_NAME = "";
+        var AZURE_SERVICE_NAME = "";
+        var AZURE_INDEX_NAME = "";
+        var AZURE_QUERY_KEY = "";
+        var BAIDU_API_ID = "";
+        var SEARCH_SERVICE = "hexo" || "hexo";
+        var ROOT = "/"||"/";
+        if(!ROOT.endsWith('/'))ROOT += '/';
+    </script>
+
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>
