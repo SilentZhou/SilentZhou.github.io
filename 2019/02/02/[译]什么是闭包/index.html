@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>[译]什么是闭包? | 缥缈孤鸿影</title>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="缥缈孤鸿影">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="shortcut icon" href="" />
+  <link rel="icon" href="" />
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				缥缈孤鸿影
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+                        
+    						
+    							<li>
+    								<a class='nav-about flat-box' href='/'>
+    									<i class='fa fa-home fa-'></i>&nbsp;主页
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-projects flat-box' href='https://www.blocknews.xyz/'>
+    									<i class='fa fa-cube fa-'></i>&nbsp;项目
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-home flat-box' href='/'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;博客
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-archives flat-box' href='/archives'>
+    									<i class='fa fa-archive fa-'></i>&nbsp;归档
+    								</a>
+    							</li>
+    						
+        			 
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fa fa-search fa-fw" href='javascript:void(0)'></span></a></li>
+				
+				<li class='s-menu'><a class="fa fa-navicon fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="fa fa-comments fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-top'><a class="fa fa-arrow-up fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="fa fa-list-ul fa-fw flat-box" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">缥缈孤鸿影</div>
+		<nav>
+            <ul>
+                
+                    
+                        <li>
+                            <a class='nav-about flat-box nav flat-box' href='/'><i class='fa fa-home fa-fw'></i>&nbsp;主页</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-projects flat-box nav flat-box' href='https://www.blocknews.xyz/'><i class='fa fa-cube fa-fw'></i>&nbsp;项目</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-home flat-box nav flat-box' href='/'><i class='fa fa-rss fa-fw'></i>&nbsp;博客</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-archives flat-box nav flat-box' href='/archives'><i class='fa fa-archive fa-fw'></i>&nbsp;归档</a>
+                        </li>
+                    
+             
+            </ul>
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post-[译]什么是闭包" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                [译]什么是闭包?
+            
+        </h1>
+        <time>
+            2019-02-02&nbsp;&nbsp;
+            <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/technology/">technology</a>
+    </div>
+
+
+    </section>
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <blockquote>
+<p>原文链接： <a href="https://web.archive.org/web/20201016190733/https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36" target="_blank" rel="noopener">Master the JavaScript Interview: What is a Closure?</a><br>原文作者：<a href="https://web.archive.org/web/20201016190733/https://medium.com/@_ericelliott/" target="_blank" rel="noopener">Eric Elliott</a><br>译者：SilentZhou</p>
+</blockquote>
+<p>我将以我在JavaScript面试中经常问的第一个或最后一个问题来开始这一系列文章。坦白说，如果不了解闭包你在JavaScript的道路上是不会走得太远的。<br><a id="more"></a></p>
+<p>你或许会鼓捣一点代码，但是你真的明白如何构建一个真正的JavaScript应用吗？你真的明白正在发生什么，或者说应用是如何运行的吗？我保持怀疑。不知道这个问题的答案就是一个严重的警示。</p>
+<p>你不仅应该知道闭包的机制，而且应该知道为什么闭包很重要并能够轻松答出闭包的几个用途。</p>
+<p>闭包经常在对象数据隐私、事件处理程序和回调函数、部分函数应用、柯里化和其它函数式编程模式中。</p>
+<p>我不在乎被面试的人是否知道闭包这个词或者这个词的技术定义。我想知道他们是否了解基本机制。如果他们不知道，这通常是一个清晰的指标，说明开发者没有多少开发实际JavaScript应用的经验。</p>
+<blockquote>
+<p>如果你不能回答这个问题，你就是一个初级开发者。我不在乎你编程多久了。</p>
+</blockquote>
+<p>这也许听起来刻薄，但其实并不(刻薄)。我的意思是最称职的面试官会问你什么是闭包,通常回答错这个问题会让你失去这个工作。或者你幸运的得到了这个工作，也会让你每年损失潜在的数万美元薪水，因为无论你编程多久你将被雇佣为一个初级开发者而不是一个高级开发者。</p>
+<p>准备好回答接下来的问题:”你能说出两个闭包的常见应用吗?”</p>
+<h2 id="什么是闭包？"><a href="#什么是闭包？" class="headerlink" title="什么是闭包？"></a>什么是闭包？</h2><p>闭包是函数和对它词法环境的引用的结合。换言之,闭包让你能够从一个函数内部访问外部函数的作用域。在JavaScript中，每次创建函数时，都会在函数创建时形成闭包。</p>
+<p>为了使用闭包,在一个函数中定义另一个函数并暴露这个函数就行了。要暴露一个函数，将其返回或者传递给另一个函数。</p>
+<p>内部函数可以访问外部函数作用域内的变量，即使外部函数已经返回了。</p>
+<h2 id="闭包的使用-案例"><a href="#闭包的使用-案例" class="headerlink" title="闭包的使用 (案例)"></a>闭包的使用 (案例)</h2><p>在其它语言中,闭包通常被用于给予对象数据隐私。数据隐私是一个帮助我们面向接口编程而不是面向实现的必要属性。这是一个帮助我们构建更健壮的软件的重要概念,因为实现细节相比接口更容易发生重大改变。</p>
+<p>在JavaScript中，闭包是保证数据隐私的主要机制。当你为了数据隐私而使用闭包时,括号内变量只在外部函数的作用域中。你不能从作用域外获得数据除非通过对象的特权方法。在JavaScript中,任何在闭包范围内暴露的方法都是特权的(方法).例如:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getSecret = <span class="function">(<span class="params">secret</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    get: <span class="function"><span class="params">()</span> =&gt;</span> secret</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">test(<span class="string">'Closure for object privacy.'</span>, assert =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> msg = <span class="string">'.get() should have access to the closure.'</span>;</span><br><span class="line">  <span class="keyword">const</span> expected = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">const</span> obj = getSecret(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> actual = obj.get();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    assert.ok(secret, <span class="string">'This throws an error.'</span>);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    assert.ok(<span class="literal">true</span>, <span class="string">`The secret var is only available</span></span><br><span class="line"><span class="string">      to privileged methods.`</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  assert.equal(actual, expected, msg);</span><br><span class="line">  assert.end();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>在上面的例子中,定义在getSecret()作用域中的.get()方法成了一个特权方法，能够访问getSecret()中的任何变量。在这个例子中,就是参数secret.</p>
+<p>对象不是产生数据隐私的唯一方法。闭包也能用于创建返回值受内部状态影响的有状态的函数,例如:</p>
+<blockquote>
+<p>const secret = msg =&gt; () =&gt; msg;</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Secret - creates closures with secret messages.</span></span><br><span class="line"><span class="comment">// https://gist.github.com/ericelliott/f6a87bc41de31562d0f9</span></span><br><span class="line"><span class="comment">// https://jsbin.com/hitusu/edit?html,js,output</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// secret(msg: String) =&gt; getSecret() =&gt; msg: String</span></span><br><span class="line"><span class="keyword">const</span> secret = <span class="function">(<span class="params">msg</span>) =&gt;</span> () =&gt; msg;</span><br><span class="line"></span><br><span class="line">test(<span class="string">'secret'</span>, assert =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> msg = <span class="string">'secret() should return a function that returns the passed secret.'</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> theSecret = <span class="string">'Closures are easy.'</span>;</span><br><span class="line">  <span class="keyword">const</span> mySecret = secret(theSecret);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> actual = mySecret();</span><br><span class="line">  <span class="keyword">const</span> expected = theSecret;</span><br><span class="line"></span><br><span class="line">  assert.equal(actual, expected, msg);</span><br><span class="line">  assert.end();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>在函数式编程中,闭包常被用于部分应用&amp;柯里化中。这里需要一些定义：</p>
+<p>应用：将函数应用于其参数以生成返回值的过程。</p>
+<p>部分应用：将函数应用于其部分参数的过程。部分应用函数被返回等待后续使用。换言之,一个函数，它接受一个带有多个参数的函数，并返回一个参数较少的函数。部分应用将一个或多个参数固定在返回的函数中,返回的函数为了完成函数应用接受剩下的参数作为参数。</p>
+<p>部分应用利用闭包作用域来固定参数。你可以写一个能够部分应用参数到目标函数的通用函数。它将具有以下特征:</p>
+<blockquote>
+<p>partialApply(targetFunction: Function, …fixedArgs: Any[]) =&gt;<br>functionWithFewerParams(…remainingArgs: Any[])</p>
+</blockquote>
+<p>如果在阅读上面的符号时需要帮助，查看Rtype: Reading Function Signatures(<a href="https://github.com/ericelliott/rtype#reading-function-signatures)。" target="_blank" rel="noopener">https://github.com/ericelliott/rtype#reading-function-signatures)。</a></p>
+<p>它将接受一个以任意个数字作为参数的函数，随后是我们想部分应用于函数的参数,然后返回一个接受剩下的参数的函数。</p>
+<p>一个例子或许有助于理解。比如说你有一个将两个数字相加的函数：</p>
+<blockquote>
+<p>const add = (a, b) =&gt; a + b;</p>
+</blockquote>
+<p>现在你想要一个将10和任意数字相加的函数。我们称它add10()。add10(5)的结果将是15。我们的partialApply()函数能够完成这个操作：</p>
+<blockquote>
+<p>const add10 = partialApply(add, 10);<br>add10(5);</p>
+</blockquote>
+<p>在这个例子中,这个参数10变成了add10()闭包作用域中的一个固定参数。</p>
+<p>让我们看一个partialApply()的可能实现:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Generic Partial Application Function</span></span><br><span class="line"><span class="comment">// https://jsbin.com/biyupu/edit?html,js,output</span></span><br><span class="line"><span class="comment">// https://gist.github.com/ericelliott/f0a8fd662111ea2f569e</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// partialApply(targetFunction: Function, ...fixedArgs: Any[]) =&gt;</span></span><br><span class="line"><span class="comment">//   functionWithFewerParams(...remainingArgs: Any[])</span></span><br><span class="line"><span class="keyword">const</span> partialApply = <span class="function">(<span class="params">fn, ...fixedArgs</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">...remainingArgs</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>, fixedArgs.concat(remainingArgs));</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">test(<span class="string">'add10'</span>, assert =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> msg = <span class="string">'partialApply() should partially apply functions'</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> add = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> add10 = partialApply(add, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> actual = add10(<span class="number">5</span>);</span><br><span class="line">  <span class="keyword">const</span> expected = <span class="number">15</span>;</span><br><span class="line"></span><br><span class="line">  assert.equal(actual, expected, msg);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>正如你所见，它仅仅是返回了一个函数，该函数保留了传递给partialApply()函数的fixedArgs参数的访问权限。</p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/programming/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;programming</a>
+                
+            </div>
+        
+
+        
+            <div class="prev-next">
+                
+                    <section class="prev" >
+                        <span class="art-item-left">
+                            <h6><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
+                            <h4>
+                                <a href="/2019/02/04/[译]什么是promise/" rel="prev" title="[译]什么是promise?">
+                                  
+                                      [译]什么是promise?
+                                  
+                                </a>
+                            </h4>
+                            
+                                <h6 class="tags">
+                                    
+                                        <i class="fa fa-tag fa-fw"></i>programming
+                                    
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/01/23/译-什么是纯函数/" rel="prev" title="[译]什么是纯函数?">
+                                    
+                                        [译]什么是纯函数?
+                                    
+                                </a>
+                            </h4>
+                            
+                                <h6 class="tags">
+                                    
+                                        <i class="fa fa-tag fa-fw"></i>programming
+                                    
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+    <article class="post white-box comments">
+        <section class="article typo">
+
+            
+                
+
+    <div class="recommended_posts">
+        <h4><i class="fa fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;你可能感兴趣的文章</h4>
+        <ul>
+            
+                <li><a href="https://www.blocknews.xyz/2021/01/17/JavaScript中的继承/">JavaScript中的继承</a></li>
+            
+                <li><a href="https://www.blocknews.xyz/2019/03/09/Webpack-Dev-Server常用配置/">Webpack Dev Server常用配置</a></li>
+            
+                <li><a href="https://www.blocknews.xyz/2019/02/04/[译]什么是promise/">[译]什么是promise?</a></li>
+            
+                <li><a href="https://www.blocknews.xyz/2019/01/23/译-什么是纯函数/">[译]什么是纯函数?</a></li>
+            
+                <li><a href="https://www.blocknews.xyz/2018/09/25/我们还要再等30年吗/">我们还要再等30年吗?</a></li>
+            
+        </ul>
+    </div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+
+
+            
+
+            
+
+                
+
+                
+
+                
+            
+
+        </section>
+    </article>
+
+
+<script>
+    window.subData = {
+        title: '[译]什么是闭包?',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+    
+        
+    <section class='m_widget author'>
+        
+            <div class='header'>
+                <img class='avatar' src='/images/rock_egg.jpg' />
+            </div>
+        
+        <div class='content'>
+            
+                <h2>SilentZhou</h2>
+            
+            
+                <div>
+                    <i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>
+                    Living in truth。
+                </div>
+            
+        </div>
+        
+            <div class="social-wrapper">
+              
+                
+                    <a href="mailto:silentzhoucode@gmail.com" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-envelope" aria-hidden="true"></i></a>
+                
+              
+                
+                    <a href="https://github.com/SilentZhou" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-github" aria-hidden="true"></i></a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                    <a href="atom" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-rss" aria-hidden="true"></i></a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            </div>
+        
+    </section>
+
+
+    
+    
+        <section class='m_widget categories'>
+    <div class='header'><i class="fa fa-sitemap fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+    <div class='content'>
+        
+            <ul class="entry">
+                
+                    <li><a class="flat-box" href="/categories/life/"><div class='name'>life</div><div class='badge'>1</div></a></li>
+                
+                    <li><a class="flat-box" href="/categories/technology/"><div class='name'>technology</div><div class='badge'>13</div></a></li>
+                
+            </ul>
+        
+    </div>
+</section>
+
+    
+    
+        
+    <section class='m_widget tagcloud'>
+        <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+        <div class='content'>
+            <a href="/tags/music/" style="font-size: 14px; color: #999">music</a> <a href="/tags/programming/" style="font-size: 24px; color: #555">programming</a>
+        </div>
+    </section>
+
+
+    
+    
+    
+    
+        
+    <section class='m_widget toc-wrapper'>
+        <div class="header"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+        <div class='content'>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是闭包？"><span class="toc-text">什么是闭包？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#闭包的使用-案例"><span class="toc-text">闭包的使用 (案例)</span></a></li></ol>
+        </div>
+    </section>
+
+
+    
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    </div>
+    <footer id="footer" class="clearfix">
+    
+        <div class="social-wrapper">
+          
+              
+                  <a href="mailto:silentzhoucode@gmail.com" class="social fa fa-envelope flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+                  <a href="https://github.com/SilentZhou" class="social fa fa-github flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <a href="atom" class="social fa fa-rss flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+        </div>
+    
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+</footer>
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+    <script>
+        var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+        var ALGOLIA_API_KEY = "";
+        var ALGOLIA_APP_ID = "";
+        var ALGOLIA_INDEX_NAME = "";
+        var AZURE_SERVICE_NAME = "";
+        var AZURE_INDEX_NAME = "";
+        var AZURE_QUERY_KEY = "";
+        var BAIDU_API_ID = "";
+        var SEARCH_SERVICE = "hexo" || "hexo";
+        var ROOT = "/"||"/";
+        if(!ROOT.endsWith('/'))ROOT += '/';
+    </script>
+
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>

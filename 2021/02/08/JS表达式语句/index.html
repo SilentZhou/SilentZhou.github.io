@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>JS表达式语句-学习笔记 | 缥缈孤鸿影</title>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="缥缈孤鸿影">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="shortcut icon" href="" />
+  <link rel="icon" href="" />
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				缥缈孤鸿影
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+                        
+    						
+    							<li>
+    								<a class='nav-about flat-box' href='/'>
+    									<i class='fa fa-home fa-'></i>&nbsp;主页
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-projects flat-box' href='https://www.blocknews.xyz/'>
+    									<i class='fa fa-cube fa-'></i>&nbsp;项目
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-home flat-box' href='/'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;博客
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-archives flat-box' href='/archives'>
+    									<i class='fa fa-archive fa-'></i>&nbsp;归档
+    								</a>
+    							</li>
+    						
+        			 
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fa fa-search fa-fw" href='javascript:void(0)'></span></a></li>
+				
+				<li class='s-menu'><a class="fa fa-navicon fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="fa fa-comments fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-top'><a class="fa fa-arrow-up fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="fa fa-list-ul fa-fw flat-box" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">缥缈孤鸿影</div>
+		<nav>
+            <ul>
+                
+                    
+                        <li>
+                            <a class='nav-about flat-box nav flat-box' href='/'><i class='fa fa-home fa-fw'></i>&nbsp;主页</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-projects flat-box nav flat-box' href='https://www.blocknews.xyz/'><i class='fa fa-cube fa-fw'></i>&nbsp;项目</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-home flat-box nav flat-box' href='/'><i class='fa fa-rss fa-fw'></i>&nbsp;博客</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-archives flat-box nav flat-box' href='/archives'><i class='fa fa-archive fa-fw'></i>&nbsp;归档</a>
+                        </li>
+                    
+             
+            </ul>
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post-JS表达式语句" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                JS表达式语句-学习笔记
+            
+        </h1>
+        <time>
+            2021-02-08&nbsp;&nbsp;
+            <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/technology/">technology</a>
+    </div>
+
+
+    </section>
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <h3 id="什么是表达式语句"><a href="#什么是表达式语句" class="headerlink" title="什么是表达式语句"></a>什么是表达式语句</h3><p>表达式语句实际上就是一个表达式，它是由运算符连接变量或者直接量构成的。</p>
+<a id="more"></a>
+<h3 id="PrimaryExpression"><a href="#PrimaryExpression" class="headerlink" title="PrimaryExpression"></a>PrimaryExpression</h3><p>Primary Expression 是表达式的最小单位，它所涉及的语法结构也是优先级最高的。Primary Expression 包含了各种“直接量”，直接量就是直接用某种语法写出来的具有特定类型的值。</p>
+<p>基本类型直接量:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"abc"</span>;</span><br><span class="line"><span class="number">123</span>;</span><br><span class="line"><span class="literal">null</span>;</span><br><span class="line"><span class="literal">true</span>;</span><br><span class="line"><span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
+<p>直接量的形式定义对象:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(&#123;&#125;);</span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);</span><br><span class="line">(<span class="class"><span class="keyword">class</span></span>&#123; &#125;);</span><br><span class="line">[];</span><br><span class="line">/abc/g;</span><br></pre></td></tr></table></figure>
+<p>this 或者变量</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>;</span><br><span class="line">myVar;</span><br></pre></td></tr></table></figure>
+<p>圆括号，可以改变运算顺序</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(a + b);</span><br></pre></td></tr></table></figure>
+<h3 id="MemberExpression-成员表达式"><a href="#MemberExpression-成员表达式" class="headerlink" title="MemberExpression 成员表达式"></a>MemberExpression 成员表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a.b;</span><br><span class="line">a[<span class="string">"b"</span>];</span><br><span class="line"><span class="keyword">new</span>.target;</span><br><span class="line"><span class="keyword">super</span>.b;</span><br></pre></td></tr></table></figure>
+<p> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new.target" target="_blank" rel="noopener"><strong><code>new.target</code></strong></a>用于判断函数是否被new 调用，super 则是构造函数中，用于访问父类的属性的语法。</p>
+<p>Member Expression 最初设计是为了属性访问的，不过从语法结构需要，以下两种在 JavaScript 标准中当做 Member Expression。</p>
+<p>这是一个是带函数的模板，这个带函数名的模板表示把模板的各个部分算好后传递给一个函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f`a$&#123;b&#125;c`;</span><br></pre></td></tr></table></figure>
+<p>另一个是带参数列表的 new 运算</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new Cls();</span><br></pre></td></tr></table></figure>
+<h3 id="NewExpression-NEW-表达式"><a href="#NewExpression-NEW-表达式" class="headerlink" title="NewExpression NEW 表达式"></a>NewExpression NEW 表达式</h3><p>这里的 New Expression 特指没有参数列表的表达式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new new Cls(1);// =&gt; new (new Cls(1))</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cls</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(n)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"cls"</span>,n)</span><br><span class="line">    <span class="keyword">return</span> <span class="class"><span class="keyword">class</span></span>&#123;</span><br><span class="line">      <span class="keyword">constructor</span>(n)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"returned"</span>,n)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="keyword">new</span> Cls(<span class="number">1</span>)</span><br><span class="line"><span class="comment">// cls 1</span></span><br><span class="line"><span class="comment">// returned undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> (<span class="keyword">new</span> Cls)(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// cls undefined</span></span><br><span class="line"><span class="comment">// returned 1</span></span><br></pre></td></tr></table></figure>
+<h3 id="CallExpression-函数调用表达式"><a href="#CallExpression-函数调用表达式" class="headerlink" title="CallExpression 函数调用表达式"></a>CallExpression 函数调用表达式</h3><p>Member Expression 后加一个括号里的参数列表可以构成Call Expression。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a.b(c);</span><br><span class="line"><span class="keyword">super</span>();</span><br><span class="line"></span><br><span class="line">a.b(c)(d)(e);</span><br><span class="line">a.b(c)[<span class="number">3</span>];</span><br><span class="line">a.b(c).d;</span><br><span class="line">a.b(c)<span class="string">`xyz`</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="LeftHandSideExpression-左值表达式"><a href="#LeftHandSideExpression-左值表达式" class="headerlink" title="LeftHandSideExpression 左值表达式"></a>LeftHandSideExpression 左值表达式</h3><p>New Expression 和 Call Expression 统称 LeftHandSideExpression，左值表达式。</p>
+<p>左值表达式就是可以放到等号左边的表达式,最经典的用法是用于构成赋值表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a().c = b;</span><br></pre></td></tr></table></figure>
+<h3 id="AssignmentExpression-赋值表达式"><a href="#AssignmentExpression-赋值表达式" class="headerlink" title="AssignmentExpression 赋值表达式"></a>AssignmentExpression 赋值表达式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = b</span><br></pre></td></tr></table></figure>
+<p>连续赋值，是右结合的，先把 d 的结果赋值给 c，再把整个表达式的结果赋值给 b，再赋值给 a：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = b = c = d</span><br><span class="line">a = (b = (c = d)) //等于上面</span><br></pre></td></tr></table></figure>
+<p>结合一些运算符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a += b; // a = a + b;</span><br></pre></td></tr></table></figure>
+<p>能有这样用的运算符有下面这几种：*=、/=、%=、+=、-=、&lt;&lt;=、&gt;&gt;=、&gt;&gt;&gt;=、&amp;=、^=、|=、**=</p>
+<h3 id="更新表达式-UpdateExpression"><a href="#更新表达式-UpdateExpression" class="headerlink" title="更新表达式 UpdateExpression"></a>更新表达式 UpdateExpression</h3><p>左值表达式搭配 ++ – 运算符，可以形成更新表达式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-- a;</span><br><span class="line">++ a;</span><br><span class="line">a --</span><br><span class="line">a ++</span><br></pre></td></tr></table></figure>
+<h3 id="一元运算表达式-UnaryExpression"><a href="#一元运算表达式-UnaryExpression" class="headerlink" title="一元运算表达式 UnaryExpression"></a>一元运算表达式 UnaryExpression</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">delete</span> a.b;</span><br><span class="line"><span class="keyword">void</span> a;</span><br><span class="line"><span class="keyword">typeof</span> a;</span><br><span class="line">- a;</span><br><span class="line">~ a;</span><br><span class="line">! a;</span><br><span class="line"><span class="keyword">await</span> a;</span><br></pre></td></tr></table></figure>
+<h3 id="乘方表达式-ExponentiationExpression"><a href="#乘方表达式-ExponentiationExpression" class="headerlink" title="乘方表达式 ExponentiationExpression"></a>乘方表达式 ExponentiationExpression</h3><p>** 运算是右结合的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">++i ** <span class="number">30</span></span><br><span class="line"><span class="number">2</span> ** <span class="number">30</span> <span class="comment">//正确</span></span><br><span class="line"><span class="number">-2</span> ** <span class="number">30</span> <span class="comment">//报错</span></span><br></pre></td></tr></table></figure>
+<p>-2 这样的一元运算表达式，是不可以放入乘方表达式的，如果需要表达类似的逻辑，必须加括号。</p>
+<h3 id="乘法表达式-MultiplicativeExpression"><a href="#乘法表达式-MultiplicativeExpression" class="headerlink" title="乘法表达式 MultiplicativeExpression"></a>乘法表达式 MultiplicativeExpression</h3><p>乘法表达式有三种运算符：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">x * 2;</span><br><span class="line">y / 3;</span><br><span class="line">z % 4;</span><br></pre></td></tr></table></figure>
+<h3 id="加法表达式-AdditiveExpression"><a href="#加法表达式-AdditiveExpression" class="headerlink" title="加法表达式 AdditiveExpression"></a>加法表达式 AdditiveExpression</h3><p>加法表达式是由乘法表达式用加号或者减号连接构成的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a + b * c</span><br></pre></td></tr></table></figure>
+<h3 id="移位表达式-ShiftExpression"><a href="#移位表达式-ShiftExpression" class="headerlink" title="移位表达式 ShiftExpression"></a>移位表达式 ShiftExpression</h3><p>移位运算把操作数看做二进制表示的整数，然后移动特定位数。所以左移 n 位相当于乘以 2 的 n 次方，右移 n 位相当于除以 2 取整 n 次。普通移位会保持正负数。无符号移位会把减号视为符号位 1，同时参与移位。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt; 向左移位</span><br><span class="line">&gt;&gt; 向右移位</span><br><span class="line">&gt;&gt;&gt; 无符号向右移位</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> &lt;&lt; <span class="number">2</span>) <span class="comment">//4</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">-1</span> &lt;&lt; <span class="number">2</span>) <span class="comment">// -4</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">8</span> &gt;&gt; <span class="number">2</span>)<span class="comment">// 2</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">-8</span> &gt;&gt; <span class="number">2</span>) <span class="comment">// -2</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> &gt;&gt;&gt;<span class="number">1</span>) <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">-1</span> &gt;&gt;&gt;<span class="number">1</span>) <span class="comment">// 2147483647</span></span><br></pre></td></tr></table></figure>
+<h3 id="关系表达式-RelationalExpression"><a href="#关系表达式-RelationalExpression" class="headerlink" title="关系表达式 RelationalExpression"></a>关系表达式 RelationalExpression</h3><p>移位表达式可以构成关系表达式，这里的关系表达式就是大于、小于、大于等于、小于等于等运算符号连接，统称为关系运算。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;=</span><br><span class="line">&gt;=</span><br><span class="line">&lt;</span><br><span class="line">&gt;</span><br><span class="line"><span class="keyword">instanceof</span> </span><br><span class="line"><span class="keyword">in</span></span><br></pre></td></tr></table></figure>
+<h3 id="相等表达式-EqualityExpression"><a href="#相等表达式-EqualityExpression" class="headerlink" title="相等表达式 EqualityExpression"></a>相等表达式 EqualityExpression</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a <span class="keyword">instanceof</span> <span class="string">"object"</span> == <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>四种运算符：==、!=、===、!==</p>
+<h3 id="位运算表达式"><a href="#位运算表达式" class="headerlink" title="位运算表达式"></a>位运算表达式</h3><p>位运算表达式含有三种：</p>
+<ul>
+<li>按位与表达式 BitwiseANDExpression</li>
+<li>按位异或表达式 BitwiseANDExpression</li>
+<li>按位或表达式 BitwiseORExpression</li>
+</ul>
+<p>按位与运算符（&amp;）、按位异或运算符（^）、按位或运算符（|）</p>
+<h3 id="逻辑与表达式和逻辑或表达式"><a href="#逻辑与表达式和逻辑或表达式" class="headerlink" title="逻辑与表达式和逻辑或表达式"></a>逻辑与表达式和逻辑或表达式</h3><p>这两种表达式都不会做类型转换，所以尽管是逻辑运算，但是最终的结果可能是其它类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">false || 1;</span><br><span class="line">false &amp;&amp; undefined;</span><br></pre></td></tr></table></figure>
+<h3 id="条件表达式-ConditionalExpression"><a href="#条件表达式-ConditionalExpression" class="headerlink" title="条件表达式 ConditionalExpression"></a>条件表达式 ConditionalExpression</h3><p>条件表达式由逻辑或表达式和条件运算符构成，条件运算符又称三目运算符，它有三个部分，由两个运算符?和:配合使用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">condition ? branch1 : branch2</span><br></pre></td></tr></table></figure>
+<p>条件表达式也像逻辑表达式一样，可能忽略后面表达式的计算。</p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/programming/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;programming</a>
+                
+            </div>
+        
+
+        
+            <div class="prev-next">
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2021/02/06/JS语句/" rel="prev" title="JS语句-学习笔记">
+                                    
+                                        JS语句-学习笔记
+                                    
+                                </a>
+                            </h4>
+                            
+                                <h6 class="tags">
+                                    
+                                        <i class="fa fa-tag fa-fw"></i>programming
+                                    
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+    <article class="post white-box comments">
+        <section class="article typo">
+
+            
+                
+
+    <div class="recommended_posts">
+        <h4><i class="fa fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;你可能感兴趣的文章</h4>
+        <ul>
+            
+                <li><a href="https://www.blocknews.xyz/2021/02/06/JS语句/">JS语句-学习笔记</a></li>
+            
+                <li><a href="https://www.blocknews.xyz/2021/02/06/JS类型转换/">JS类型转换学习笔记</a></li>
+            
+                <li><a href="https://www.blocknews.xyz/2021/02/02/Dynamic Imports/">Dynamic Imports</a></li>
+            
+                <li><a href="https://www.blocknews.xyz/2021/01/29/JS类型学习笔记/">JS类型学习笔记</a></li>
+            
+                <li><a href="https://www.blocknews.xyz/2021/01/28/《Babel插件手册》基础部分学习笔记/">《Babel插件手册》基础部分学习笔记</a></li>
+            
+        </ul>
+    </div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+
+
+            
+
+            
+
+                
+
+                
+
+                
+            
+
+        </section>
+    </article>
+
+
+<script>
+    window.subData = {
+        title: 'JS表达式语句-学习笔记',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+    
+        
+    <section class='m_widget author'>
+        
+            <div class='header'>
+                <img class='avatar' src='/images/rock_egg.jpg' />
+            </div>
+        
+        <div class='content'>
+            
+                <h2>SilentZhou</h2>
+            
+            
+                <div>
+                    <i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>
+                    Living in truth。
+                </div>
+            
+        </div>
+        
+            <div class="social-wrapper">
+              
+                
+                    <a href="mailto:silentzhoucode@gmail.com" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-envelope" aria-hidden="true"></i></a>
+                
+              
+                
+                    <a href="https://github.com/SilentZhou" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-github" aria-hidden="true"></i></a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                    <a href="atom" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-rss" aria-hidden="true"></i></a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            </div>
+        
+    </section>
+
+
+    
+    
+        <section class='m_widget categories'>
+    <div class='header'><i class="fa fa-sitemap fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+    <div class='content'>
+        
+            <ul class="entry">
+                
+                    <li><a class="flat-box" href="/categories/life/"><div class='name'>life</div><div class='badge'>1</div></a></li>
+                
+                    <li><a class="flat-box" href="/categories/technology/"><div class='name'>technology</div><div class='badge'>13</div></a></li>
+                
+            </ul>
+        
+    </div>
+</section>
+
+    
+    
+        
+    <section class='m_widget tagcloud'>
+        <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+        <div class='content'>
+            <a href="/tags/music/" style="font-size: 14px; color: #999">music</a> <a href="/tags/programming/" style="font-size: 24px; color: #555">programming</a>
+        </div>
+    </section>
+
+
+    
+    
+    
+    
+        
+    <section class='m_widget toc-wrapper'>
+        <div class="header"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+        <div class='content'>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是表达式语句"><span class="toc-text">什么是表达式语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PrimaryExpression"><span class="toc-text">PrimaryExpression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MemberExpression-成员表达式"><span class="toc-text">MemberExpression 成员表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NewExpression-NEW-表达式"><span class="toc-text">NewExpression NEW 表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CallExpression-函数调用表达式"><span class="toc-text">CallExpression 函数调用表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LeftHandSideExpression-左值表达式"><span class="toc-text">LeftHandSideExpression 左值表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AssignmentExpression-赋值表达式"><span class="toc-text">AssignmentExpression 赋值表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新表达式-UpdateExpression"><span class="toc-text">更新表达式 UpdateExpression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一元运算表达式-UnaryExpression"><span class="toc-text">一元运算表达式 UnaryExpression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#乘方表达式-ExponentiationExpression"><span class="toc-text">乘方表达式 ExponentiationExpression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#乘法表达式-MultiplicativeExpression"><span class="toc-text">乘法表达式 MultiplicativeExpression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加法表达式-AdditiveExpression"><span class="toc-text">加法表达式 AdditiveExpression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移位表达式-ShiftExpression"><span class="toc-text">移位表达式 ShiftExpression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关系表达式-RelationalExpression"><span class="toc-text">关系表达式 RelationalExpression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#相等表达式-EqualityExpression"><span class="toc-text">相等表达式 EqualityExpression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#位运算表达式"><span class="toc-text">位运算表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑与表达式和逻辑或表达式"><span class="toc-text">逻辑与表达式和逻辑或表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#条件表达式-ConditionalExpression"><span class="toc-text">条件表达式 ConditionalExpression</span></a></li></ol>
+        </div>
+    </section>
+
+
+    
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    </div>
+    <footer id="footer" class="clearfix">
+    
+        <div class="social-wrapper">
+          
+              
+                  <a href="mailto:silentzhoucode@gmail.com" class="social fa fa-envelope flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+                  <a href="https://github.com/SilentZhou" class="social fa fa-github flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <a href="atom" class="social fa fa-rss flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+        </div>
+    
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+</footer>
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+    <script>
+        var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+        var ALGOLIA_API_KEY = "";
+        var ALGOLIA_APP_ID = "";
+        var ALGOLIA_INDEX_NAME = "";
+        var AZURE_SERVICE_NAME = "";
+        var AZURE_INDEX_NAME = "";
+        var AZURE_QUERY_KEY = "";
+        var BAIDU_API_ID = "";
+        var SEARCH_SERVICE = "hexo" || "hexo";
+        var ROOT = "/"||"/";
+        if(!ROOT.endsWith('/'))ROOT += '/';
+    </script>
+
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>

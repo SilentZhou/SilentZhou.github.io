@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>我们还要再等30年吗? | 缥缈孤鸿影</title>
+  <title>JS类型转换学习笔记 | 缥缈孤鸿影</title>
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -134,21 +134,21 @@
     <div class="l_body">
     <div class='container clearfix'>
         <div class='l_main'>
-            <article id="post-我们还要再等30年吗" class="post white-box article-type-post" itemscope itemprop="blogPost">
+            <article id="post-JS类型转换" class="post white-box article-type-post" itemscope itemprop="blogPost">
     <section class='meta'>
         <h1 class="title">
             
-                我们还要再等30年吗?
+                JS类型转换学习笔记
             
         </h1>
         <time>
-            2018-09-25&nbsp;&nbsp;
+            2021-02-06&nbsp;&nbsp;
             <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         
     
     <div class='cats'>
-        <a href="/categories/life/">life</a>
+        <a href="/categories/technology/">technology</a>
     </div>
 
 
@@ -157,17 +157,118 @@
     <section class="article typo">
 
         <div class="article-entry" itemprop="articleBody">
-            <p>我是一个假乐迷。去看仙人掌音乐节是因为有崔健、万能青年旅店和李志。</p>
-<a id="more"></a>
-<p>我是一个假乐迷。</p>
-<p>去看仙人掌音乐节是因为有崔健、万能青年旅店和李志。然而，即使是他们的歌，我也谈不上非常熟悉。我勉强挤在外围，不敢太靠近舞台，靠近舞台的是一听前奏就开始摇头晃脑跟着哼唱的核心歌迷。其实我不常听歌，唱歌五音不全，喜欢他们的歌因为歌中表达的东西。</p>
+            <p>Type Conversion</p>
+<pre><code>+  a+b
++ “false” == false
++ ap[o] = 1;
+</code></pre><a id="more"></a>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Null</th>
+<th style="text-align:center">Undefined</th>
+<th style="text-align:center">Boolean(True)</th>
+<th style="text-align:center">Boolean(false)</th>
+<th style="text-align:center">Number</th>
+<th style="text-align:center">String</th>
+<th style="text-align:center">Symbol</th>
+<th style="text-align:center">Object</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:center">FALSE</td>
+<td style="text-align:center">FALSE</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">0/NAN-false</td>
+<td style="text-align:center">“”-false</td>
+<td style="text-align:center">TRUE</td>
+<td style="text-align:center">True</td>
+</tr>
+<tr>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">NaN</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">StringToNumber</td>
+<td style="text-align:center">TypeError</td>
+<td style="text-align:center">拆箱转换</td>
+</tr>
+<tr>
+<td style="text-align:center">String</td>
+<td style="text-align:center">“null”</td>
+<td style="text-align:center">“undefined”</td>
+<td style="text-align:center">TRUE</td>
+<td style="text-align:center">FALSE</td>
+<td style="text-align:center">NumbetToString</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">TypeError</td>
+<td style="text-align:center">拆箱转换</td>
+</tr>
+<tr>
+<td style="text-align:center">Object</td>
+<td style="text-align:center">TypeError</td>
+<td style="text-align:center">TypeError</td>
+<td style="text-align:center">装箱转换</td>
+<td style="text-align:center">装箱转换</td>
+<td style="text-align:center">装箱转换</td>
+<td style="text-align:center">装箱转换</td>
+<td style="text-align:center">装箱转换</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
+<p>Unboxing</p>
+<ul>
+<li>ToPremitive</li>
+<li>toString vs valueOf</li>
+<li>Symbol.toPrimitive</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">  [<span class="built_in">Symbol</span>.toPrimitive]()&#123; <span class="keyword">return</span> <span class="number">3</span>&#125;,</span><br><span class="line">  toString()&#123;<span class="keyword">return</span> <span class="string">"2"</span>&#125;,</span><br><span class="line">  valueOf()&#123; <span class="keyword">return</span> <span class="number">1</span>&#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x=&#123;&#125;</span><br><span class="line">x[o]=<span class="number">1</span>  <span class="comment">// 属性，优先调用Symbol.toPrimitive，其次是toString</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"a"</span>+o)  <span class="comment">// 加法，优先调用Symbol.toPrimitive，其次是valueOf</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(x)</span><br></pre></td></tr></table></figure>
+<p>Boxing</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>对象</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Number</td>
+<td>new Number(1)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>String</td>
+<td>new String(“a”)</td>
+<td>“a”</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>new Boolean(true)</td>
+<td>true</td>
+</tr>
+<tr>
+<td>Symbol</td>
+<td>new Object(Symbol(“a”))</td>
+<td>Symbol(“a”)</td>
+</tr>
+</tbody>
+</table>
 
         </div>
 
         
             <div class="article-tags tags">
                 
-                    <a href="/tags/music/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;music</a>
+                    <a href="/tags/programming/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;programming</a>
                 
             </div>
         
@@ -179,9 +280,9 @@
                         <span class="art-item-left">
                             <h6><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
                             <h4>
-                                <a href="/2019/01/23/译-什么是纯函数/" rel="prev" title="[译]什么是纯函数?">
+                                <a href="/2021/02/06/JS语句/" rel="prev" title="JS语句-学习笔记">
                                   
-                                      [译]什么是纯函数?
+                                      JS语句-学习笔记
                                   
                                 </a>
                             </h4>
@@ -195,6 +296,26 @@
                         </span>
                     </section>
                 
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2021/02/02/Dynamic Imports/" rel="prev" title="Dynamic Imports">
+                                    
+                                        Dynamic Imports
+                                    
+                                </a>
+                            </h4>
+                            
+                                <h6 class="tags">
+                                    
+                                        <i class="fa fa-tag fa-fw"></i>programming
+                                    
+                                </h6>
+                            
+                        </span>
+                    </section>
                 
             </div>
         
@@ -217,15 +338,15 @@
         <h4><i class="fa fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;你可能感兴趣的文章</h4>
         <ul>
             
-                <li><a href="https://www.blocknews.xyz/2021/01/17/JavaScript中的继承/">JavaScript中的继承</a></li>
+                <li><a href="https://www.blocknews.xyz/2021/02/08/JS表达式语句/">JS表达式语句-学习笔记</a></li>
             
-                <li><a href="https://www.blocknews.xyz/2019/03/09/Webpack-Dev-Server常用配置/">Webpack Dev Server常用配置</a></li>
+                <li><a href="https://www.blocknews.xyz/2021/02/06/JS语句/">JS语句-学习笔记</a></li>
             
-                <li><a href="https://www.blocknews.xyz/2019/02/04/[译]什么是promise/">[译]什么是promise?</a></li>
+                <li><a href="https://www.blocknews.xyz/2021/02/02/Dynamic Imports/">Dynamic Imports</a></li>
             
-                <li><a href="https://www.blocknews.xyz/2019/02/02/[译]什么是闭包/">[译]什么是闭包?</a></li>
+                <li><a href="https://www.blocknews.xyz/2021/01/29/JS类型学习笔记/">JS类型学习笔记</a></li>
             
-                <li><a href="https://www.blocknews.xyz/2019/01/23/译-什么是纯函数/">[译]什么是纯函数?</a></li>
+                <li><a href="https://www.blocknews.xyz/2021/01/28/《Babel插件手册》基础部分学习笔记/">《Babel插件手册》基础部分学习笔记</a></li>
             
         </ul>
     </div>
@@ -249,7 +370,7 @@
 
 <script>
     window.subData = {
-        title: '我们还要再等30年吗?',
+        title: 'JS类型转换学习笔记',
         tools: true
     }
 </script>

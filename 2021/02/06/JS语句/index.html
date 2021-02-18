@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>我们还要再等30年吗? | 缥缈孤鸿影</title>
+  <title>JS语句-学习笔记 | 缥缈孤鸿影</title>
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -134,21 +134,21 @@
     <div class="l_body">
     <div class='container clearfix'>
         <div class='l_main'>
-            <article id="post-我们还要再等30年吗" class="post white-box article-type-post" itemscope itemprop="blogPost">
+            <article id="post-JS语句" class="post white-box article-type-post" itemscope itemprop="blogPost">
     <section class='meta'>
         <h1 class="title">
             
-                我们还要再等30年吗?
+                JS语句-学习笔记
             
         </h1>
         <time>
-            2018-09-25&nbsp;&nbsp;
+            2021-02-06&nbsp;&nbsp;
             <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         
     
     <div class='cats'>
-        <a href="/categories/life/">life</a>
+        <a href="/categories/technology/">technology</a>
     </div>
 
 
@@ -157,17 +157,58 @@
     <section class="article typo">
 
         <div class="article-entry" itemprop="articleBody">
-            <p>我是一个假乐迷。去看仙人掌音乐节是因为有崔健、万能青年旅店和李志。</p>
+            <h2 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h2><h3 id="Grammar"><a href="#Grammar" class="headerlink" title="Grammar"></a>Grammar</h3><ul>
+<li>简单语句</li>
+<li>组合语句</li>
+<li><p>声明</p>
 <a id="more"></a>
-<p>我是一个假乐迷。</p>
-<p>去看仙人掌音乐节是因为有崔健、万能青年旅店和李志。然而，即使是他们的歌，我也谈不上非常熟悉。我勉强挤在外围，不敢太靠近舞台，靠近舞台的是一听前奏就开始摇头晃脑跟着哼唱的核心歌迷。其实我不常听歌，唱歌五音不全，喜欢他们的歌因为歌中表达的东西。</p>
+<h3 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h3></li>
+<li><p>Completion Record</p>
+</li>
+<li>Lexical Environment</li>
+</ul>
+<h3 id="Completion-Record"><a href="#Completion-Record" class="headerlink" title="Completion Record"></a>Completion Record</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">If(x == <span class="number">1</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>[[type]]: normal,break,continue,return,or throw</li>
+<li>[[value]]: 基本类型</li>
+<li>[[target]]: label</li>
+</ul>
+<h3 id="简单语句"><a href="#简单语句" class="headerlink" title="简单语句"></a>简单语句</h3><ul>
+<li>ExpressionStatement</li>
+<li>EmptyStatement</li>
+<li>DebuggerStatement</li>
+<li>ThrowStatement</li>
+<li>ContinueStatement</li>
+<li>BreakStatement</li>
+<li>ReturnStatement</li>
+</ul>
+<h3 id="复合语句"><a href="#复合语句" class="headerlink" title="复合语句"></a>复合语句</h3><ul>
+<li>BlockStatement</li>
+<li>IfStatement</li>
+<li>SwitchStatement</li>
+<li>IterationStatement</li>
+<li>WithStatement</li>
+<li>LabelledStatement</li>
+<li>TryStatement</li>
+</ul>
+<h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><ul>
+<li>FunctionDeclaration</li>
+<li>GeneratorDeclaration</li>
+<li>AsyncGeneratorDeclaration</li>
+<li>VariableStatement</li>
+<li>ClassDeclaration</li>
+<li>LexicalDeclaration</li>
+</ul>
+<h3 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var a= 2;</span><br><span class="line">void function()&#123;</span><br><span class="line">  a = 1;</span><br><span class="line">  return;</span><br><span class="line">  var a;</span><br><span class="line">&#125;();</span><br><span class="line">console.log(a);  // 2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var a= 2;</span><br><span class="line">void function()&#123;</span><br><span class="line">  a = 1;</span><br><span class="line">  return;</span><br><span class="line">  const a;</span><br><span class="line">&#125;();</span><br><span class="line">console.log(a);  // SyntaxError: Missing initializer in const declaration</span><br></pre></td></tr></table></figure>
+<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>var的作用域是函数体内，const的作用域是花括号内。</p>
 
         </div>
 
         
             <div class="article-tags tags">
                 
-                    <a href="/tags/music/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;music</a>
+                    <a href="/tags/programming/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;programming</a>
                 
             </div>
         
@@ -179,9 +220,9 @@
                         <span class="art-item-left">
                             <h6><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
                             <h4>
-                                <a href="/2019/01/23/译-什么是纯函数/" rel="prev" title="[译]什么是纯函数?">
+                                <a href="/2021/02/08/JS表达式语句/" rel="prev" title="JS表达式语句-学习笔记">
                                   
-                                      [译]什么是纯函数?
+                                      JS表达式语句-学习笔记
                                   
                                 </a>
                             </h4>
@@ -195,6 +236,26 @@
                         </span>
                     </section>
                 
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2021/02/06/JS类型转换/" rel="prev" title="JS类型转换学习笔记">
+                                    
+                                        JS类型转换学习笔记
+                                    
+                                </a>
+                            </h4>
+                            
+                                <h6 class="tags">
+                                    
+                                        <i class="fa fa-tag fa-fw"></i>programming
+                                    
+                                </h6>
+                            
+                        </span>
+                    </section>
                 
             </div>
         
@@ -217,15 +278,15 @@
         <h4><i class="fa fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;你可能感兴趣的文章</h4>
         <ul>
             
-                <li><a href="https://www.blocknews.xyz/2021/01/17/JavaScript中的继承/">JavaScript中的继承</a></li>
+                <li><a href="https://www.blocknews.xyz/2021/02/08/JS表达式语句/">JS表达式语句-学习笔记</a></li>
             
-                <li><a href="https://www.blocknews.xyz/2019/03/09/Webpack-Dev-Server常用配置/">Webpack Dev Server常用配置</a></li>
+                <li><a href="https://www.blocknews.xyz/2021/02/06/JS类型转换/">JS类型转换学习笔记</a></li>
             
-                <li><a href="https://www.blocknews.xyz/2019/02/04/[译]什么是promise/">[译]什么是promise?</a></li>
+                <li><a href="https://www.blocknews.xyz/2021/02/02/Dynamic Imports/">Dynamic Imports</a></li>
             
-                <li><a href="https://www.blocknews.xyz/2019/02/02/[译]什么是闭包/">[译]什么是闭包?</a></li>
+                <li><a href="https://www.blocknews.xyz/2021/01/29/JS类型学习笔记/">JS类型学习笔记</a></li>
             
-                <li><a href="https://www.blocknews.xyz/2019/01/23/译-什么是纯函数/">[译]什么是纯函数?</a></li>
+                <li><a href="https://www.blocknews.xyz/2021/01/28/《Babel插件手册》基础部分学习笔记/">《Babel插件手册》基础部分学习笔记</a></li>
             
         </ul>
     </div>
@@ -249,7 +310,7 @@
 
 <script>
     window.subData = {
-        title: '我们还要再等30年吗?',
+        title: 'JS语句-学习笔记',
         tools: true
     }
 </script>
@@ -362,6 +423,13 @@
     
     
         
+    <section class='m_widget toc-wrapper'>
+        <div class="header"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+        <div class='content'>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Statement"><span class="toc-text">Statement</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Grammar"><span class="toc-text">Grammar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Runtime"><span class="toc-text">Runtime</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Completion-Record"><span class="toc-text">Completion Record</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#简单语句"><span class="toc-text">简单语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复合语句"><span class="toc-text">复合语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#声明"><span class="toc-text">声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#预处理"><span class="toc-text">预处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#作用域"><span class="toc-text">作用域</span></a></li></ol></li></ol>
+        </div>
+    </section>
+
 
     
 
