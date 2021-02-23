@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>函数式编程中的compose&amp;pipe | 缥缈孤鸿影</title>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="缥缈孤鸿影">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="shortcut icon" href="" />
+  <link rel="icon" href="" />
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				缥缈孤鸿影
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+                        
+    						
+    							<li>
+    								<a class='nav-about flat-box' href='/'>
+    									<i class='fa fa-home fa-'></i>&nbsp;主页
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-projects flat-box' href='https://www.blocknews.xyz/'>
+    									<i class='fa fa-cube fa-'></i>&nbsp;项目
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-home flat-box' href='/'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;博客
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-archives flat-box' href='/archives'>
+    									<i class='fa fa-archive fa-'></i>&nbsp;归档
+    								</a>
+    							</li>
+    						
+        			 
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fa fa-search fa-fw" href='javascript:void(0)'></span></a></li>
+				
+				<li class='s-menu'><a class="fa fa-navicon fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="fa fa-comments fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-top'><a class="fa fa-arrow-up fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="fa fa-list-ul fa-fw flat-box" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">缥缈孤鸿影</div>
+		<nav>
+            <ul>
+                
+                    
+                        <li>
+                            <a class='nav-about flat-box nav flat-box' href='/'><i class='fa fa-home fa-fw'></i>&nbsp;主页</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-projects flat-box nav flat-box' href='https://www.blocknews.xyz/'><i class='fa fa-cube fa-fw'></i>&nbsp;项目</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-home flat-box nav flat-box' href='/'><i class='fa fa-rss fa-fw'></i>&nbsp;博客</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-archives flat-box nav flat-box' href='/archives'><i class='fa fa-archive fa-fw'></i>&nbsp;归档</a>
+                        </li>
+                    
+             
+            </ul>
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post-函数式编程中的compose&amp;pipe" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                函数式编程中的compose&amp;pipe
+            
+        </h1>
+        <time>
+            2021-02-23&nbsp;&nbsp;
+            <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/technology/">technology</a>
+    </div>
+
+
+    </section>
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>如果使用过函数式编程库<a href="https://ramdajs.com/docs/#" target="_blank" rel="noopener">Ramda</a>，那么很可能使用过<code>compose</code>和<code>pipie</code>,它们都能组合多个函数生成一个新的函数，那么它们是如何实现的呢？</p>
+<a id="more"></a>
+<h3 id="Function-composition"><a href="#Function-composition" class="headerlink" title="Function composition"></a><strong>Function composition</strong></h3><p>要探究<code>compose</code>和<code>pipe</code>的实现，就不得不提到Function composition这个概念，看看维基百科是如何解释这个概念的：</p>
+<blockquote>
+<p>In <a href="https://en.wikipedia.org/wiki/Computer_science" target="_blank" rel="noopener">computer science</a>, <strong>function composition</strong> is an act or mechanism to combine simple <a href="https://en.wikipedia.org/wiki/Subroutine" target="_blank" rel="noopener">functions</a> to build more complicated ones. Like the usual <a href="https://en.wikipedia.org/wiki/Function_composition" target="_blank" rel="noopener">composition of functions</a> in <a href="https://en.wikipedia.org/wiki/Mathematics" target="_blank" rel="noopener">mathematics</a>, the result of each function is passed as the argument of the next, and the result of the last one is the result of the whole.</p>
+</blockquote>
+<p>简而言之就是把多个简单的函数组合成一个复杂的函数，每个函数的返回值就是下一个函数的参数，最后函数的返回值就是所有执行所有函数后的结果。</p>
+<p>再来看看<a href="https://medium.com/@_ericelliott?source=post_page-----20dfb109a1a0--------------------------------" target="_blank" rel="noopener">Eric Elliott</a>在<a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0" target="_blank" rel="noopener">Master the JavaScript Interview: What is Function Composition?</a>给出的解释：</p>
+<blockquote>
+<p><strong>Function composition</strong> is the process of combining two or more functions to produce a new function. Composing functions together is like snapping together a series of pipes for our data to flow through.</p>
+</blockquote>
+<p><strong>Function composition</strong>就是组合两个或者多个函数生成一个新函数的过程。组合函数就像是让我们的数据流经一系列管道。</p>
+<p><a href="https://ramdajs.com/docs/#" target="_blank" rel="noopener">Ramda</a>中的和<code>pipie</code>和<code>compose</code></p>
+<p><code>pipe</code>就是管道的意思，我们再看看<a href="https://ramdajs.com/docs/#" target="_blank" rel="noopener">Ramda</a>中的<a href="https://ramdajs.com/docs/#pipe" target="_blank" rel="noopener">pipe</a>的函数签名：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(((a, b, …, n) → o), (o → p), …, (x → y), (y → z)) → ((a, b, …, n) → z)</span><br></pre></td></tr></table></figure>
+<p>用例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> f = R.pipe(<span class="built_in">Math</span>.pow, R.negate, R.inc);</span><br><span class="line"></span><br><span class="line">f(<span class="number">3</span>, <span class="number">4</span>); <span class="comment">// -(3^4) + 1</span></span><br></pre></td></tr></table></figure>
+<p><code>pipe</code>是从左向右组合函数，最左边的函数可以接受多个参数，其余函数只能接受单个参数，从上面的函数签名我们可以看到，左边的函数返回值依次流向下一个函数，作为下一个函数的参数，就像流经一个管道一样，最后得到我们想要的结果。</p>
+<p><a href="https://ramdajs.com/docs/#compose" target="_blank" rel="noopener">compose</a>和<a href="https://ramdajs.com/docs/#pipe" target="_blank" rel="noopener">pipe</a>类似，不同之处在于它是从右往左组合函数，最右边的函数可以接受多个参数，函数签名如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((y → z), (x → y), …, (o → p), ((a, b, …, n) → o)) → ((a, b, …, n) → z)</span><br></pre></td></tr></table></figure>
+<p>用例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> classyGreeting = <span class="function">(<span class="params">firstName, lastName</span>) =&gt;</span> <span class="string">"The name's "</span> + lastName + <span class="string">", "</span> + firstName + <span class="string">" "</span> + lastName</span><br><span class="line"><span class="keyword">const</span> yellGreeting = R.compose(R.toUpper, classyGreeting);</span><br><span class="line">yellGreeting(<span class="string">'James'</span>, <span class="string">'Bond'</span>); <span class="comment">//=&gt; "THE NAME'S BOND, JAMES BOND"</span></span><br><span class="line"></span><br><span class="line">R.compose(<span class="built_in">Math</span>.abs, R.add(<span class="number">1</span>), R.multiply(<span class="number">2</span>))(<span class="number">-4</span>) <span class="comment">//=&gt; 7</span></span><br></pre></td></tr></table></figure>
+<h3 id="如何实现compose和pipe"><a href="#如何实现compose和pipe" class="headerlink" title="如何实现compose和pipe"></a>如何实现<code>compose</code>和<code>pipe</code></h3><p>如果我们要组合两个函数，其实是比较简单的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> compose2 = <span class="function">(<span class="params">f, g</span>) =&gt;</span> (...args) =&gt; f(g(...args))</span><br></pre></td></tr></table></figure>
+<p><code>compose2</code>用例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> add = <span class="function"><span class="params">x</span>=&gt;</span>x+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> multiply = <span class="function">(<span class="params">x,y</span>)=&gt;</span>x*y;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> multiply_add_compose2 = compose2(add,multiply)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(multiply_add_compose2(<span class="number">3</span>,<span class="number">4</span>))  <span class="comment">//13</span></span><br></pre></td></tr></table></figure>
+<p>那么要组合多个函数呢，可以借助<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce" target="_blank" rel="noopener">Array.prototype.reduce()</a>和<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduceRight" target="_blank" rel="noopener">Array.prototype.reduceRight()</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> compose2 = <span class="function">(<span class="params">f, g</span>) =&gt;</span> (...args) =&gt; f(g(...args))</span><br><span class="line"><span class="keyword">const</span> compose = <span class="function">(<span class="params">...fns</span>) =&gt;</span> fns.reduce(compose2)</span><br><span class="line"><span class="keyword">const</span> pipe = <span class="function">(<span class="params">...fns</span>) =&gt;</span> fns.reduceRight(compose2);</span><br></pre></td></tr></table></figure>
+<p><code>compose</code>和<code>pipe</code>用例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> flat = <span class="function"><span class="params">arr</span> =&gt;</span> arr.flat(<span class="literal">Infinity</span>)</span><br><span class="line"><span class="keyword">const</span> unique = <span class="function"><span class="params">arr</span> =&gt;</span> <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(arr))</span><br><span class="line"><span class="keyword">const</span> sort  = <span class="function"><span class="params">arr</span> =&gt;</span> arr.sort(<span class="function">(<span class="params">a,b</span>)=&gt;</span>a-b)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> flat_unique_sort_compose = compose(sort,unique,flat)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> flat_unique_sort_pipe = pipe(flat,unique,sort)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arr1 = [<span class="number">3</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">5</span>,[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>],<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">console</span>.log(flat_unique_sort_compose(arr1)) <span class="comment">//[2,3,4,5,7,8,9]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(flat_unique_sort_pipe(arr1)) <span class="comment">//[2,3,4,5,7,8,9]</span></span><br></pre></td></tr></table></figure>
+<h3 id="compose的应用"><a href="#compose的应用" class="headerlink" title="compose的应用"></a><code>compose</code>的应用</h3><p>在redux中可以看到compose在<a href="https://github.com/reduxjs/redux/blob/b3165d0cbd0d8f48142284807d764160df26d6fa/src/applyMiddleware.ts" target="_blank" rel="noopener"><strong>applyMiddleware</strong></a>被用来组合多个redux中间件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">	...</span><br><span class="line">    <span class="keyword">const</span> store = createStore(reducer, preloadedState)</span><br><span class="line">    <span class="keyword">let</span> dispatch: Dispatch = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(</span><br><span class="line">        <span class="string">'Dispatching while constructing your middleware is not allowed. '</span> +</span><br><span class="line">          <span class="string">'Other middleware would not be applied to this dispatch.'</span></span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> middlewareAPI: MiddlewareAPI = &#123;</span><br><span class="line">      getState: store.getState,</span><br><span class="line">      dispatch: <span class="function">(<span class="params">action, ...args</span>) =&gt;</span> dispatch(action, ...args)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> chain = middlewares.map(<span class="function"><span class="params">middleware</span> =&gt;</span> middleware(middlewareAPI))</span><br><span class="line">    dispatch = compose&lt;<span class="keyword">typeof</span> dispatch&gt;(...chain)(store.dispatch)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      ...store,</span><br><span class="line">      dispatch</span><br><span class="line">    &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/reduxjs/redux/blob/master/src/compose.ts" target="_blank" rel="noopener">redux源码中的compose</a>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">compose</span>(<span class="params">...funcs: Function[]</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (funcs.length === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// infer the argument type so it is usable in inference down the line</span></span><br><span class="line">    <span class="keyword">return</span> &lt;T&gt;(arg: T) =&gt; arg</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  if (funcs.length === 1) &#123;</span><br><span class="line">    return funcs[0]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return funcs.reduce((a, b) =&gt; (...args: any) =&gt; a(b(...args)))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考资料：</p>
+<p><a href="https://en.wikipedia.org/wiki/Function_composition_(computer_science" target="_blank" rel="noopener">Function composition (computer science)</a>)</p>
+<p><a href="https://gist.github.com/JamieMason/172460a36a0eaef24233e6edb2706f83" target="_blank" rel="noopener">ES6 JavaScript Compose Function</a></p>
+<p><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0" target="_blank" rel="noopener">Master the JavaScript Interview: What is Function Composition?</a></p>
+<p><a href="https://github.com/reduxjs/redux/blob/master/src/compose.ts" target="_blank" rel="noopener">redux源码中的compose</a></p>
+<p><a href="https://ramdajs.com/docs/#" target="_blank" rel="noopener">Ramda</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce" target="_blank" rel="noopener">Array.prototype.reduce()</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduceRight" target="_blank" rel="noopener">Array.prototype.reduceRight()</a></p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/programming/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;programming</a>
+                
+            </div>
+        
+
+        
+            <div class="prev-next">
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2021/02/08/JS表达式语句/" rel="prev" title="JS表达式语句-学习笔记">
+                                    
+                                        JS表达式语句-学习笔记
+                                    
+                                </a>
+                            </h4>
+                            
+                                <h6 class="tags">
+                                    
+                                        <i class="fa fa-tag fa-fw"></i>programming
+                                    
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+    <article class="post white-box comments">
+        <section class="article typo">
+
+            
+                
+
+    <div class="recommended_posts">
+        <h4><i class="fa fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;你可能感兴趣的文章</h4>
+        <ul>
+            
+                <li><a href="https://www.blocknews.xyz/2021/02/08/JS表达式语句/">JS表达式语句-学习笔记</a></li>
+            
+                <li><a href="https://www.blocknews.xyz/2021/02/06/JS语句/">JS语句-学习笔记</a></li>
+            
+                <li><a href="https://www.blocknews.xyz/2021/02/06/JS类型转换/">JS类型转换学习笔记</a></li>
+            
+                <li><a href="https://www.blocknews.xyz/2021/02/02/Dynamic Imports/">Dynamic Imports</a></li>
+            
+                <li><a href="https://www.blocknews.xyz/2021/01/29/JS类型学习笔记/">JS类型学习笔记</a></li>
+            
+        </ul>
+    </div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+
+
+            
+
+            
+
+                
+
+                
+
+                
+            
+
+        </section>
+    </article>
+
+
+<script>
+    window.subData = {
+        title: '函数式编程中的compose&amp;pipe',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+    
+        
+    <section class='m_widget author'>
+        
+            <div class='header'>
+                <img class='avatar' src='/images/rock_egg.jpg' />
+            </div>
+        
+        <div class='content'>
+            
+                <h2>SilentZhou</h2>
+            
+            
+                <div>
+                    <i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>
+                    Living in truth。
+                </div>
+            
+        </div>
+        
+            <div class="social-wrapper">
+              
+                
+                    <a href="mailto:silentzhoucode@gmail.com" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-envelope" aria-hidden="true"></i></a>
+                
+              
+                
+                    <a href="https://github.com/SilentZhou" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-github" aria-hidden="true"></i></a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                    <a href="atom" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-rss" aria-hidden="true"></i></a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            </div>
+        
+    </section>
+
+
+    
+    
+        <section class='m_widget categories'>
+    <div class='header'><i class="fa fa-sitemap fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+    <div class='content'>
+        
+            <ul class="entry">
+                
+                    <li><a class="flat-box" href="/categories/life/"><div class='name'>life</div><div class='badge'>1</div></a></li>
+                
+                    <li><a class="flat-box" href="/categories/technology/"><div class='name'>technology</div><div class='badge'>14</div></a></li>
+                
+            </ul>
+        
+    </div>
+</section>
+
+    
+    
+        
+    <section class='m_widget tagcloud'>
+        <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+        <div class='content'>
+            <a href="/tags/music/" style="font-size: 14px; color: #999">music</a> <a href="/tags/programming/" style="font-size: 24px; color: #555">programming</a>
+        </div>
+    </section>
+
+
+    
+    
+    
+    
+        
+    <section class='m_widget toc-wrapper'>
+        <div class="header"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+        <div class='content'>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Function-composition"><span class="toc-text">Function composition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何实现compose和pipe"><span class="toc-text">如何实现compose和pipe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#compose的应用"><span class="toc-text">compose的应用</span></a></li></ol>
+        </div>
+    </section>
+
+
+    
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    </div>
+    <footer id="footer" class="clearfix">
+    
+        <div class="social-wrapper">
+          
+              
+                  <a href="mailto:silentzhoucode@gmail.com" class="social fa fa-envelope flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+                  <a href="https://github.com/SilentZhou" class="social fa fa-github flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <a href="atom" class="social fa fa-rss flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+        </div>
+    
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+</footer>
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+    <script>
+        var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+        var ALGOLIA_API_KEY = "";
+        var ALGOLIA_APP_ID = "";
+        var ALGOLIA_INDEX_NAME = "";
+        var AZURE_SERVICE_NAME = "";
+        var AZURE_INDEX_NAME = "";
+        var AZURE_QUERY_KEY = "";
+        var BAIDU_API_ID = "";
+        var SEARCH_SERVICE = "hexo" || "hexo";
+        var ROOT = "/"||"/";
+        if(!ROOT.endsWith('/'))ROOT += '/';
+    </script>
+
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>
